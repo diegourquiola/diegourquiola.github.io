@@ -7,4 +7,192 @@
   <h1>Welcome to my site</h1>
   <p>Computer Science student | Software Engineering</p>
 </body>
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Trevecca-pedia — Project</title>
+  <meta name="description" content="Trevecca-pedia: a wiki platform with search, auth, and services." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="./">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Trevecca-pedia</span>
+      </a>
+
+      <nav class="nav">
+        <a href="#overview">Overview</a>
+        <a href="#features">Features</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#links">Links</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="badge">CS Project • Wiki Platform</p>
+          <h1>Trevecca-pedia</h1>
+          <p class="lead">
+            A multi-service wiki platform featuring search, authentication, and a web UI.
+            Built to be clear, scalable, and easy to demo.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn primary" href="https://github.com/DeLsonJabberwo/trevecca-pedia" target="_blank" rel="noreferrer">View Repository</a>
+            <a class="btn" href="#overview">Project Overview</a>
+          </div>
+
+          <div class="meta">
+            <div class="meta-card">
+              <div class="meta-label">Role</div>
+              <div class="meta-value">Authentication Service</div>
+            </div>
+            <div class="meta-card">
+              <div class="meta-label">Tech</div>
+              <div class="meta-value">Go • PostgreSQL • Docker</div>
+            </div>
+            <div class="meta-card">
+              <div class="meta-label">Status</div>
+              <div class="meta-value">MVP in progress</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-panel" aria-label="Project highlights">
+          <div class="panel-header">
+            <h2>Highlights</h2>
+            <p>What this project demonstrates</p>
+          </div>
+          <ul class="panel-list">
+            <li><span class="check">✓</span> Clear service boundaries (web, wiki, auth)</li>
+            <li><span class="check">✓</span> Practical authentication flow (JWT-based)</li>
+            <li><span class="check">✓</span> Deployable dev environment with Docker</li>
+            <li><span class="check">✓</span> Designed for iteration and teamwork</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="overview" class="section">
+      <div class="container">
+        <h2>Overview</h2>
+        <p>
+          Trevecca-pedia is a wiki platform built as a service-based system.
+          Users can browse and search content, sign in securely, and manage pages.
+          The MVP focuses on: wiki service, web service, and authentication.
+        </p>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Problem</h3>
+            <p>Provide an internal, searchable knowledge base with a clean UX and reliable auth.</p>
+          </div>
+          <div class="card">
+            <h3>Solution</h3>
+            <p>Services that each do one job well: content, web UI, and authentication.</p>
+          </div>
+          <div class="card">
+            <h3>Outcome</h3>
+            <p>Easy to demo, easy to extend, and ready for future features.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section alt">
+      <div class="container">
+        <h2>Key Features (MVP)</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Authentication</h3>
+            <ul class="list">
+              <li>Register / Login</li>
+              <li>JWT access tokens</li>
+              <li>Protected routes</li>
+              <li>Basic role-ready structure</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Wiki + Web</h3>
+            <ul class="list">
+              <li>View pages</li>
+              <li>Search pages</li>
+              <li>Create/edit pages (if enabled)</li>
+              <li>Service-to-service calls</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="architecture" class="section">
+      <div class="container">
+        <h2>Architecture</h2>
+        <p class="muted">A simple view of how the MVP pieces connect:</p>
+
+        <div class="diagram">
+          <div class="node">Browser / Client</div>
+          <div class="arrow">→</div>
+          <div class="node">Web Service</div>
+          <div class="arrow">→</div>
+          <div class="stack">
+            <div class="node">Auth Service</div>
+            <div class="node">Wiki Service</div>
+          </div>
+          <div class="arrow">→</div>
+          <div class="node">PostgreSQL</div>
+        </div>
+
+        <div class="note">
+          <strong>Authentication focus:</strong> login issues a JWT; web service sends token on protected requests;
+          services validate token before performing actions.
+        </div>
+      </div>
+    </section>
+
+    <section id="links" class="section alt">
+      <div class="container">
+        <h2>Links</h2>
+        <div class="grid-3">
+          <a class="card link-card" href="https://github.com/DeLsonJabberwo/trevecca-pedia" target="_blank" rel="noreferrer">
+            <h3>Repository</h3>
+            <p>Source code, issues, and progress.</p>
+          </a>
+          <a class="card link-card" href="#" onclick="alert('Add your demo link here when ready!'); return false;">
+            <h3>Live Demo</h3>
+            <p>Publish when your web UI is deployed.</p>
+          </a>
+          <a class="card link-card" href="#" onclick="alert('Add your documentation link here (README / docs site).'); return false;">
+            <h3>Docs</h3>
+            <p>Architecture notes and API references.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Diego Urquiola • Trevecca-pedia</p>
+      <a href="https://github.com/DeLsonJabberwo" target="_blank" rel="noreferrer">GitHub</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
