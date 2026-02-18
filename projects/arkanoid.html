@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arkanoid Remake — Diego Urquiola</title>
+  <meta name="description" content="Arkanoid Remake: extended Arkanoid breakout game in Java with improved collision detection, new brick types, and cleaner OOP design." />
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Diego Urquiola</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="main-nav" aria-label="Primary navigation">
+        <a href="../">Home</a>
+        <a href="./index.html" class="active">Projects</a>
+        <a href="../about.html">About</a>
+        <a href="../resume.html">Resume</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../">Home</a>
+          <span aria-hidden="true">/</span>
+          <a href="./index.html">Projects</a>
+          <span aria-hidden="true">/</span>
+          <span>Arkanoid Remake</span>
+        </nav>
+        <div class="tag-row" style="margin-bottom:14px">
+          <span class="tag blue">Java</span>
+          <span class="tag">OOP</span>
+          <span class="tag">Game Dev</span>
+          <span class="tag green">Complete</span>
+        </div>
+        <h1>Arkanoid Remake</h1>
+        <p class="lead">
+          An extended version of the classic Arkanoid breakout game — improved collision
+          detection, multiple brick types, a power-up system, and a refactored
+          object-oriented architecture.
+        </p>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="project-detail">
+      <div class="container project-layout">
+
+        <article class="project-main">
+
+          <!-- Overview -->
+          <div class="content-section">
+            <h2>Overview</h2>
+            <p style="color:var(--text-secondary); line-height:1.75">
+              This project started from a base Arkanoid implementation and expanded it
+              significantly. The goal was to improve the game's behavior, add new mechanics,
+              and refactor the codebase to follow solid OOP principles — specifically making
+              it easy to add new brick types and behaviors without modifying existing classes.
+            </p>
+            <p style="color:var(--text-secondary); line-height:1.75">
+              Arkanoid is a good OOP exercise because the domain is naturally object-oriented:
+              Ball, Paddle, Brick, and PowerUp are all distinct entities with their own state
+              and behavior. The challenge is designing the relationships between them so that
+              collision handling, game state, and rendering stay clean as complexity grows.
+            </p>
+
+            <div class="grid-3" style="margin-top:20px">
+              <div class="card">
+                <h3>Starting Point</h3>
+                <p>A basic Arkanoid clone with a single brick type, simple collision, and no power-up system.</p>
+              </div>
+              <div class="card">
+                <h3>Goal</h3>
+                <p>Extend the game with richer mechanics and refactor so new features don't require rewriting existing code.</p>
+              </div>
+              <div class="card">
+                <h3>Result</h3>
+                <p>A playable game with multiple brick types, power-ups, and a clean inheritance hierarchy.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tech Stack -->
+          <div class="content-section">
+            <h2>Tech Stack</h2>
+            <div class="tech-grid">
+              <span class="tech-badge">Java</span>
+              <span class="tech-badge">Java Swing / AWT</span>
+              <span class="tech-badge">OOP &amp; Inheritance</span>
+              <span class="tech-badge">Game Loop</span>
+              <span class="tech-badge">2D Collision Detection</span>
+            </div>
+          </div>
+
+          <!-- What I Built -->
+          <div class="content-section">
+            <h2>What I Built / Improved</h2>
+            <ul class="content-list">
+              <li><strong>Collision detection overhaul</strong> — replaced the original axis-aligned bounding box collision with side-specific detection, so the ball correctly bounces off the top, bottom, left, and right faces of a brick independently. This fixed the "ball clips through corner" bug in the original.</li>
+              <li><strong>Brick class hierarchy</strong> — abstracted bricks into a base <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">Brick</code> class and created subclasses for StandardBrick, ToughBrick (takes two hits), and ExplodingBrick (destroys adjacent bricks on destruction).</li>
+              <li><strong>Power-up system</strong> — added falling power-ups that drop from destroyed bricks: wide paddle, extra ball, and slow ball. Each power-up is its own class implementing a shared interface, making it easy to add more.</li>
+              <li><strong>Game state management</strong> — added proper win/lose conditions, a lives system, level progression, and a simple score tracker displayed in the game HUD.</li>
+              <li><strong>Level loading</strong> — levels are defined as 2D arrays of brick type codes, making it straightforward to design new levels without changing game logic.</li>
+              <li><strong>Game loop cleanup</strong> — separated update logic (physics, collisions, state) from rendering, so the game loop is predictable and easy to extend.</li>
+            </ul>
+          </div>
+
+          <!-- Architecture -->
+          <div class="content-section">
+            <h2>Architecture &amp; Game Loop</h2>
+            <p style="color:var(--text-secondary); margin-bottom:16px">How the major components interact each frame:</p>
+
+            <div class="diagram">
+              <div class="diagram-flow">
+                <div class="dnode hi">Game Loop (tick)</div>
+                <div class="darrow">&rarr;</div>
+                <div class="dstack">
+                  <div class="dnode">Update: Ball, Paddle, PowerUps</div>
+                  <div class="dnode">Collision Detection</div>
+                  <div class="dnode">State: Score, Lives, Level</div>
+                </div>
+                <div class="darrow">&rarr;</div>
+                <div class="dnode green">Render Frame</div>
+              </div>
+            </div>
+
+            <div class="callout">
+              <strong>Collision handling:</strong> Each frame, the ball's new position is tested
+              against all bricks, the walls, and the paddle. When a collision is detected, the
+              bounce direction is computed based on which face was hit. Bricks handle their own
+              hit logic (decrement health, trigger explosion, drop power-up) via an
+              <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">onHit()</code> method — the game loop doesn't need to know which brick type it's dealing with.
+            </div>
+          </div>
+
+          <!-- Challenges + Learnings -->
+          <div class="content-section">
+            <h2>Challenges &amp; What I Learned</h2>
+            <ul class="content-list">
+              <li><strong>Precise collision math</strong> — Getting side-specific collision right required computing the ball's velocity vector and the overlap on each axis. The naive approach (flip x or y velocity on any collision) produces wrong bounce angles at corners.</li>
+              <li><strong>Designing for extensibility</strong> — My first version of the brick hierarchy made ExplodingBrick hard to add because the base class knew too much about game state. I refactored to pass a callback/interface, which made adding new brick behaviors much cleaner.</li>
+              <li><strong>Game loop timing</strong> — Running the game loop at a fixed timestep vs. as fast as possible produces different behavior on different machines. I learned to use a fixed-timestep update with interpolated rendering.</li>
+              <li><strong>Scope management on a solo project</strong> — It's easy to keep adding features to a game indefinitely. I learned to define a feature list upfront and stick to it, which meant ExplodingBrick made it in but "level editor" didn't.</li>
+            </ul>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="project-sidebar">
+
+          <div class="sidebar-card">
+            <h4>Links</h4>
+            <div class="sidebar-links">
+              <a href="https://github.com/DeLsonJabberwo" target="_blank" rel="noreferrer">
+                &#9670; GitHub Profile
+              </a>
+              <a href="#" onclick="alert('Repository link coming soon.'); return false;">
+                &#9670; Repository (coming soon)
+              </a>
+              <a href="#" onclick="alert('No live demo — desktop Java app.'); return false;">
+                &#9670; Demo (desktop app)
+              </a>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <h4>Project Info</h4>
+            <div style="display:grid; gap:10px">
+              <div>
+                <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px">Type</div>
+                <div style="font-size:14px; font-weight:600">Solo / Coursework</div>
+              </div>
+              <div>
+                <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px">Language</div>
+                <div style="font-size:14px; font-weight:600">Java</div>
+              </div>
+              <div>
+                <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px">Status</div>
+                <div style="font-size:14px; font-weight:600; color:var(--accent2)">Complete</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <h4>Other Projects</h4>
+            <div class="sidebar-links">
+              <a href="./trevecca-pedia.html">&#9670; Trevecca-pedia</a>
+              <a href="./huffman-encoding.html">&#9670; Huffman Encoding</a>
+            </div>
+          </div>
+
+        </aside>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Diego Urquiola</p>
+      <div class="footer-links">
+        <a href="https://github.com/DeLsonJabberwo" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/diegourquiola0806/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

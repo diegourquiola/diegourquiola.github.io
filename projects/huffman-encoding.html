@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Huffman Encoding — Diego Urquiola</title>
+  <meta name="description" content="Huffman Encoding: lossless data compression implemented from scratch in Java — priority queues, binary trees, bit manipulation." />
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Diego Urquiola</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="main-nav" aria-label="Primary navigation">
+        <a href="../">Home</a>
+        <a href="./index.html" class="active">Projects</a>
+        <a href="../about.html">About</a>
+        <a href="../resume.html">Resume</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../">Home</a>
+          <span aria-hidden="true">/</span>
+          <a href="./index.html">Projects</a>
+          <span aria-hidden="true">/</span>
+          <span>Huffman Encoding</span>
+        </nav>
+        <div class="tag-row" style="margin-bottom:14px">
+          <span class="tag blue">Java</span>
+          <span class="tag">Data Structures</span>
+          <span class="tag">Algorithms</span>
+          <span class="tag green">Complete</span>
+        </div>
+        <h1>Huffman Encoding</h1>
+        <p class="lead">
+          A lossless data compression tool built from scratch — implements priority
+          queues, binary Huffman trees, and bit manipulation to encode and decode
+          arbitrary text with optimal prefix-free codes.
+        </p>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="project-detail">
+      <div class="container project-layout">
+
+        <article class="project-main">
+
+          <!-- Overview -->
+          <div class="content-section">
+            <h2>Overview</h2>
+            <p style="color:var(--text-secondary); line-height:1.75">
+              Huffman coding is a greedy algorithm for lossless data compression. It works
+              by assigning shorter bit codes to more frequent characters and longer codes to
+              rarer ones, so the total number of bits needed to represent a message is
+              minimized. This project implements the full pipeline from scratch — frequency
+              analysis, tree construction, encoding table generation, and byte-level
+              encode/decode — with no library shortcuts for the core algorithm.
+            </p>
+            <p style="color:var(--text-secondary); line-height:1.75">
+              This project matters because it sits at the intersection of several fundamental
+              CS concepts: greedy algorithms, tree data structures, priority queues, and
+              low-level bit manipulation. Getting all of these to work together correctly
+              requires understanding each layer, not just knowing how to call a function.
+            </p>
+
+            <div class="grid-3" style="margin-top:20px">
+              <div class="card">
+                <h3>Problem</h3>
+                <p>Represent text using fewer bits by exploiting character frequency — standard ASCII uses the same width for every character regardless of frequency.</p>
+              </div>
+              <div class="card">
+                <h3>Solution</h3>
+                <p>Build a variable-length prefix-free code where common characters get short codes and rare characters get long ones.</p>
+              </div>
+              <div class="card">
+                <h3>Result</h3>
+                <p>Lossless compression that can reduce English text by 30–50% compared to 8-bit ASCII encoding.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tech Stack -->
+          <div class="content-section">
+            <h2>Tech Stack</h2>
+            <div class="tech-grid">
+              <span class="tech-badge">Java</span>
+              <span class="tech-badge">Priority Queue (min-heap)</span>
+              <span class="tech-badge">Binary Tree</span>
+              <span class="tech-badge">Bit Manipulation</span>
+              <span class="tech-badge">HashMap</span>
+            </div>
+          </div>
+
+          <!-- What I Built -->
+          <div class="content-section">
+            <h2>What I Built</h2>
+            <ul class="content-list">
+              <li><strong>Frequency analysis</strong> — scanned input text and built a character frequency map using a HashMap.</li>
+              <li><strong>Priority queue</strong> — inserted all characters as leaf nodes ordered by frequency (lowest frequency = highest priority).</li>
+              <li><strong>Huffman tree construction</strong> — repeatedly dequeued the two lowest-frequency nodes, merged them into a new internal node with combined frequency, and re-enqueued until one root remained.</li>
+              <li><strong>Encoding table generation</strong> — traversed the tree recursively; left edge = '0', right edge = '1'; stored the bit string for each leaf in a map.</li>
+              <li><strong>Encoding</strong> — converted input text to its bit-string representation using the encoding table, then packed bits into bytes for output.</li>
+              <li><strong>Decoding</strong> — read the encoded bit stream bit-by-bit and traversed the Huffman tree, emitting a character each time a leaf was reached.</li>
+              <li><strong>Header serialization</strong> — encoded the tree structure into the output so the decoder can reconstruct it without the original frequency data.</li>
+            </ul>
+          </div>
+
+          <!-- Architecture / Workflow -->
+          <div class="content-section">
+            <h2>Algorithm Workflow</h2>
+            <p style="color:var(--text-secondary); margin-bottom:16px">Step-by-step flow from raw text to compressed output and back:</p>
+
+            <div class="diagram">
+              <div class="diagram-flow">
+                <div class="dnode">Raw Text</div>
+                <div class="darrow">&rarr;</div>
+                <div class="dnode">Frequency Map</div>
+                <div class="darrow">&rarr;</div>
+                <div class="dnode hi">Priority Queue</div>
+                <div class="darrow">&rarr;</div>
+                <div class="dnode hi">Huffman Tree</div>
+                <div class="darrow">&rarr;</div>
+                <div class="dnode">Encoding Table</div>
+                <div class="darrow">&rarr;</div>
+                <div class="dnode green">Compressed Bits</div>
+              </div>
+            </div>
+
+            <div class="callout" style="margin-top:16px">
+              <strong>Decode path:</strong> Compressed bits + serialized tree header &rarr; reconstruct tree &rarr;
+              traverse bit-by-bit &rarr; emit character at each leaf &rarr; original text recovered exactly.
+              No information is lost at any step.
+            </div>
+          </div>
+
+          <!-- Challenges + Learnings -->
+          <div class="content-section">
+            <h2>Challenges &amp; What I Learned</h2>
+            <ul class="content-list">
+              <li><strong>Bit packing</strong> — The encoding produces a bit string, but you write bytes to a file. Handling the last partial byte (padding) and ensuring the decoder knows to ignore it was a fiddly but important detail.</li>
+              <li><strong>Tree serialization</strong> — The decoder needs the tree to decode the message, so I had to figure out how to serialize the tree into the file header in a way that's compact and unambiguous. I used a pre-order traversal with leaf/internal node markers.</li>
+              <li><strong>Priority queue tie-breaking</strong> — When two nodes have the same frequency, the order you merge them affects the tree shape (though not the compressed size for that input). I learned to be explicit about comparator logic rather than relying on undefined behavior.</li>
+              <li><strong>End-to-end correctness testing</strong> — I validated by compressing a file and then decompressing it and comparing to the original byte-by-byte. Any bug in encoding or decoding shows up immediately. This taught me to design tests around round-trip invariants.</li>
+            </ul>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="project-sidebar">
+
+          <div class="sidebar-card">
+            <h4>Links</h4>
+            <div class="sidebar-links">
+              <a href="https://github.com/DeLsonJabberwo" target="_blank" rel="noreferrer">
+                &#9670; GitHub Profile
+              </a>
+              <a href="#" onclick="alert('Repository link coming soon.'); return false;">
+                &#9670; Repository (coming soon)
+              </a>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <h4>Project Info</h4>
+            <div style="display:grid; gap:10px">
+              <div>
+                <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px">Type</div>
+                <div style="font-size:14px; font-weight:600">Solo / Coursework</div>
+              </div>
+              <div>
+                <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px">Language</div>
+                <div style="font-size:14px; font-weight:600">Java</div>
+              </div>
+              <div>
+                <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px">Status</div>
+                <div style="font-size:14px; font-weight:600; color:var(--accent2)">Complete</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <h4>Other Projects</h4>
+            <div class="sidebar-links">
+              <a href="./trevecca-pedia.html">&#9670; Trevecca-pedia</a>
+              <a href="./arkanoid.html">&#9670; Arkanoid Remake</a>
+            </div>
+          </div>
+
+        </aside>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Diego Urquiola</p>
+      <div class="footer-links">
+        <a href="https://github.com/DeLsonJabberwo" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/diegourquiola0806/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — Diego Urquiola</title>
+  <meta name="description" content="About Diego Urquiola — CS student at Trevecca Nazarene University, skills, experience, and interests." />
+  <link rel="icon" type="image/svg+xml" href="./assets/img/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="./">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Diego Urquiola</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="main-nav" aria-label="Primary navigation">
+        <a href="./">Home</a>
+        <a href="./projects/">Projects</a>
+        <a href="./about.html" class="active">About</a>
+        <a href="./resume.html">Resume</a>
+        <a href="./contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="./">Home</a>
+          <span aria-hidden="true">/</span>
+          <span>About</span>
+        </nav>
+        <p class="badge">CS Student at Trevecca Nazarene University</p>
+        <h1>About Me</h1>
+        <p class="lead">
+          I build systems, learn by doing, and write code that I'd actually want to read later.
+        </p>
+      </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="section">
+      <div class="container about-grid">
+
+        <!-- Left: Bio + Skills -->
+        <div>
+          <h2>Hi, I'm Diego.</h2>
+          <p style="color:var(--text-secondary); margin-top:12px; line-height:1.75">
+            I'm a Computer Science student at Trevecca Nazarene University with a focus on
+            systems programming, backend development, and algorithms. I like projects that
+            have real structure to them — where the decisions you make in architecture actually
+            matter when things start to scale.
+          </p>
+          <p style="color:var(--text-secondary); line-height:1.75">
+            Most of my coursework and personal projects live in the space between "interesting
+            algorithm problem" and "deployable service." I've built a multi-service wiki
+            platform in Go, implemented Huffman compression from scratch, and extended an
+            Arkanoid game to practice OOP principles. Each project has pushed me to think
+            past the happy path.
+          </p>
+          <p style="color:var(--text-secondary); line-height:1.75">
+            Outside of CS, I'm interested in how systems — technical and human — handle
+            failure gracefully. When I'm not coding I'm probably reading about distributed
+            systems, tinkering with game mechanics, or figuring out why my Docker networking
+            is broken.
+          </p>
+
+          <div class="skills-section">
+            <h2 style="margin-bottom:20px">Skills</h2>
+
+            <div class="skill-group">
+              <h3>Languages</h3>
+              <div class="skill-tags">
+                <span class="skill-tag">Java</span>
+                <span class="skill-tag">C++</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Go</span>
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">HTML</span>
+                <span class="skill-tag">CSS</span>
+                <span class="skill-tag">JavaScript</span>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <h3>Tools &amp; Technologies</h3>
+              <div class="skill-tags">
+                <span class="skill-tag">Docker</span>
+                <span class="skill-tag">PostgreSQL</span>
+                <span class="skill-tag">Git</span>
+                <span class="skill-tag">GitHub</span>
+                <span class="skill-tag">REST APIs</span>
+                <span class="skill-tag">JWT</span>
+                <span class="skill-tag">Linux</span>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <h3>Concepts</h3>
+              <div class="skill-tags">
+                <span class="skill-tag">Data Structures</span>
+                <span class="skill-tag">Algorithms</span>
+                <span class="skill-tag">OOP</span>
+                <span class="skill-tag">Service Architecture</span>
+                <span class="skill-tag">Authentication</span>
+                <span class="skill-tag">Lossless Compression</span>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <h3>Interests</h3>
+              <div class="skill-tags">
+                <span class="skill-tag">Distributed Systems</span>
+                <span class="skill-tag">Systems Programming</span>
+                <span class="skill-tag">Game Development</span>
+                <span class="skill-tag">Developer Tooling</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Experience + Education -->
+        <div>
+          <h2 style="margin-bottom:24px">Experience</h2>
+          <div class="timeline">
+
+            <div class="timeline-item">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-content">
+                <h4>Customer Service Representative</h4>
+                <p class="role-meta">T-Mobile &nbsp;&bull;&nbsp; Part-time</p>
+                <p>
+                  Handled high-volume customer interactions involving account troubleshooting,
+                  billing disputes, and technical device issues. Developed the ability to
+                  quickly diagnose the root cause of a problem and explain complex account
+                  logic in plain language — a skill that translates directly to writing clear
+                  code and documentation. Learned to de-escalate frustration, work under
+                  time pressure, and close loops cleanly.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-content">
+                <h4>Authentication Service Developer</h4>
+                <p class="role-meta">Trevecca-pedia (Team Project) &nbsp;&bull;&nbsp; 2024</p>
+                <p>
+                  Owned the authentication service in a multi-service wiki platform built in
+                  Go. Designed and implemented JWT-based login and registration, protected
+                  route middleware, and inter-service token validation. Coordinated service
+                  contracts with teammates building the wiki and web services.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <h2 style="margin:40px 0 24px">Education</h2>
+          <div class="timeline">
+
+            <div class="timeline-item">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-content">
+                <h4>B.S. Computer Science</h4>
+                <p class="role-meta">Trevecca Nazarene University &nbsp;&bull;&nbsp; In progress</p>
+                <p>
+                  Core coursework in data structures, algorithms, systems programming,
+                  software engineering, and database design. Projects span backend services,
+                  compression algorithms, and game development.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <div style="margin-top:40px">
+            <a class="btn primary" href="./resume.html">View Full Resume</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Diego Urquiola</p>
+      <div class="footer-links">
+        <a href="https://github.com/DeLsonJabberwo" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/diegourquiola0806/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="./contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./assets/js/main.js"></script>
+</body>
+</html>

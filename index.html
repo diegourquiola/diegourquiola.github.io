@@ -2,189 +2,199 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Trevecca-pedia — Project</title>
-  <meta name="description" content="Trevecca-pedia: a wiki platform with search, auth, and services." />
-
-  <!-- Fonts -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Diego Urquiola — CS Portfolio</title>
+  <meta name="description" content="Diego Urquiola — CS student building multi-service backends, algorithms, and interactive applications. Projects, resume, and contact." />
+  <link rel="icon" type="image/svg+xml" href="./assets/img/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
-
 <body>
+
+  <!-- Navigation -->
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="./">
         <span class="dot" aria-hidden="true"></span>
-        <span>Trevecca-pedia</span>
+        <span>Diego Urquiola</span>
       </a>
-
-      <nav class="nav">
-        <a href="#overview">Overview</a>
-        <a href="#features">Features</a>
-        <a href="#architecture">Architecture</a>
-        <a href="#links">Links</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="main-nav" aria-label="Primary navigation">
+        <a href="./" class="active">Home</a>
+        <a href="./projects/">Projects</a>
+        <a href="./about.html">About</a>
+        <a href="./resume.html">Resume</a>
+        <a href="./contact.html">Contact</a>
       </nav>
     </div>
   </header>
 
   <main>
+
+    <!-- Hero -->
     <section class="hero">
       <div class="container hero-inner">
+
         <div class="hero-copy">
-          <p class="badge">CS Project • Wiki Platform</p>
-          <h1>Trevecca-pedia</h1>
+          <p class="badge">CS Student &mdash; Builder &amp; Problem Solver</p>
+          <h1>Building systems that work in the real world.</h1>
           <p class="lead">
-            A multi-service wiki platform featuring search, authentication, and a web UI.
-            Built to be clear, scalable, and easy to demo.
+            I'm Diego Urquiola, a Computer Science student at Trevecca Nazarene
+            University. I design multi-service backends, implement core algorithms
+            from scratch, and ship projects that are clean, functional, and ready
+            to demo.
           </p>
 
           <div class="cta-row">
-            <a class="btn primary" href="https://github.com/DeLsonJabberwo/trevecca-pedia" target="_blank" rel="noreferrer">View Repository</a>
-            <a class="btn" href="#overview">Project Overview</a>
+            <a class="btn primary" href="https://github.com/DeLsonJabberwo" target="_blank" rel="noreferrer">View GitHub</a>
+            <a class="btn" href="./projects/">Projects</a>
+            <a class="btn" href="./resume.html">Resume</a>
+            <a class="btn" href="./contact.html">Contact</a>
           </div>
 
-          <div class="meta">
-            <div class="meta-card">
-              <div class="meta-label">Role</div>
-              <div class="meta-value">Authentication Service</div>
-            </div>
-            <div class="meta-card">
-              <div class="meta-label">Tech</div>
-              <div class="meta-value">Go • PostgreSQL • Docker</div>
-            </div>
+          <div class="meta-row">
             <div class="meta-card">
               <div class="meta-label">Status</div>
-              <div class="meta-value">MVP in progress</div>
+              <div class="meta-value">CS Student</div>
+            </div>
+            <div class="meta-card">
+              <div class="meta-label">School</div>
+              <div class="meta-value">Trevecca Nazarene</div>
+            </div>
+            <div class="meta-card">
+              <div class="meta-label">Focus</div>
+              <div class="meta-value">Systems &amp; Backends</div>
             </div>
           </div>
         </div>
 
-        <div class="hero-panel" aria-label="Project highlights">
+        <div class="hero-panel" aria-label="Site highlights">
           <div class="panel-header">
-            <h2>Highlights</h2>
-            <p>What this project demonstrates</p>
+            <h2>What you'll find here</h2>
+            <p>Real projects, real code, real writeups</p>
           </div>
           <ul class="panel-list">
-            <li><span class="check">✓</span> Clear service boundaries (web, wiki, auth)</li>
-            <li><span class="check">✓</span> Practical authentication flow (JWT-based)</li>
-            <li><span class="check">✓</span> Deployable dev environment with Docker</li>
-            <li><span class="check">✓</span> Designed for iteration and teamwork</li>
+            <li><span class="check" aria-hidden="true">&#10003;</span> Multi-service backend architecture (Go, Docker, PostgreSQL)</li>
+            <li><span class="check" aria-hidden="true">&#10003;</span> Data structures &amp; algorithms implemented from scratch</li>
+            <li><span class="check" aria-hidden="true">&#10003;</span> Game development with OOP and collision systems</li>
+            <li><span class="check" aria-hidden="true">&#10003;</span> JWT-based authentication flows</li>
+            <li><span class="check" aria-hidden="true">&#10003;</span> Containerized development environments</li>
+            <li><span class="check" aria-hidden="true">&#10003;</span> Clear architectural writeups for every project</li>
           </ul>
         </div>
+
       </div>
     </section>
 
-    <section id="overview" class="section">
+    <!-- Featured Projects -->
+    <section id="projects" class="section alt">
       <div class="container">
-        <h2>Overview</h2>
-        <p>
-          Trevecca-pedia is a wiki platform built as a service-based system.
-          Users can browse and search content, sign in securely, and manage pages.
-          The MVP focuses on: wiki service, web service, and authentication.
-        </p>
+        <p class="section-label">Work</p>
+        <h2>Featured Projects</h2>
+        <p class="lead">A selection of what I've built. Each project has a full writeup with architecture, decisions, and lessons learned.</p>
 
-        <div class="grid-3">
-          <div class="card">
-            <h3>Problem</h3>
-            <p>Provide an internal, searchable knowledge base with a clean UX and reliable auth.</p>
-          </div>
-          <div class="card">
-            <h3>Solution</h3>
-            <p>Services that each do one job well: content, web UI, and authentication.</p>
-          </div>
-          <div class="card">
-            <h3>Outcome</h3>
-            <p>Easy to demo, easy to extend, and ready for future features.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+        <div class="grid-3" style="margin-top:28px">
 
-    <section id="features" class="section alt">
-      <div class="container">
-        <h2>Key Features (MVP)</h2>
-        <div class="grid-2">
-          <div class="card">
-            <h3>Authentication</h3>
-            <ul class="list">
-              <li>Register / Login</li>
-              <li>JWT access tokens</li>
-              <li>Protected routes</li>
-              <li>Basic role-ready structure</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Wiki + Web</h3>
-            <ul class="list">
-              <li>View pages</li>
-              <li>Search pages</li>
-              <li>Create/edit pages (if enabled)</li>
-              <li>Service-to-service calls</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="architecture" class="section">
-      <div class="container">
-        <h2>Architecture</h2>
-        <p class="muted">A simple view of how the MVP pieces connect:</p>
-
-        <div class="diagram">
-          <div class="node">Browser / Client</div>
-          <div class="arrow">→</div>
-          <div class="node">Web Service</div>
-          <div class="arrow">→</div>
-          <div class="stack">
-            <div class="node">Auth Service</div>
-            <div class="node">Wiki Service</div>
-          </div>
-          <div class="arrow">→</div>
-          <div class="node">PostgreSQL</div>
-        </div>
-
-        <div class="note">
-          <strong>Authentication focus:</strong> login issues a JWT; web service sends token on protected requests;
-          services validate token before performing actions.
-        </div>
-      </div>
-    </section>
-
-    <section id="links" class="section alt">
-      <div class="container">
-        <h2>Links</h2>
-        <div class="grid-3">
-          <a class="card link-card" href="https://github.com/DeLsonJabberwo/trevecca-pedia" target="_blank" rel="noreferrer">
-            <h3>Repository</h3>
-            <p>Source code, issues, and progress.</p>
+          <a href="./projects/trevecca-pedia.html" class="project-card">
+            <div>
+              <div class="tag-row" style="margin-bottom:12px">
+                <span class="tag blue">Go</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">Docker</span>
+              </div>
+              <h3>Trevecca-pedia</h3>
+              <p class="desc">A multi-service wiki platform with search, JWT authentication, and a web UI — designed with clear service boundaries and a fully containerized dev environment.</p>
+            </div>
+            <div class="project-card-footer">
+              <div class="tag-row">
+                <span class="tag">Wiki Platform</span>
+                <span class="tag green">MVP in progress</span>
+              </div>
+              <span class="project-link">View &rarr;</span>
+            </div>
           </a>
-          <a class="card link-card" href="#" onclick="alert('Add your demo link here when ready!'); return false;">
-            <h3>Live Demo</h3>
-            <p>Publish when your web UI is deployed.</p>
+
+          <a href="./projects/huffman-encoding.html" class="project-card">
+            <div>
+              <div class="tag-row" style="margin-bottom:12px">
+                <span class="tag blue">Java</span>
+                <span class="tag">Data Structures</span>
+              </div>
+              <h3>Huffman Encoding</h3>
+              <p class="desc">A lossless data compression tool built from scratch — implements priority queues, binary trees, and bit manipulation to encode and decode arbitrary text efficiently.</p>
+            </div>
+            <div class="project-card-footer">
+              <div class="tag-row">
+                <span class="tag">Algorithms</span>
+                <span class="tag green">Complete</span>
+              </div>
+              <span class="project-link">View &rarr;</span>
+            </div>
           </a>
-          <a class="card link-card" href="#" onclick="alert('Add your documentation link here (README / docs site).'); return false;">
-            <h3>Docs</h3>
-            <p>Architecture notes and API references.</p>
+
+          <a href="./projects/arkanoid.html" class="project-card">
+            <div>
+              <div class="tag-row" style="margin-bottom:12px">
+                <span class="tag blue">Java</span>
+                <span class="tag">OOP</span>
+              </div>
+              <h3>Arkanoid Remake</h3>
+              <p class="desc">An enhanced version of the classic Arkanoid breakout game — extended with improved collision detection, new brick types, power-ups, and a cleaner object-oriented design.</p>
+            </div>
+            <div class="project-card-footer">
+              <div class="tag-row">
+                <span class="tag">Game Dev</span>
+                <span class="tag green">Complete</span>
+              </div>
+              <span class="project-link">View &rarr;</span>
+            </div>
           </a>
+
+        </div>
+
+        <div style="margin-top:28px; text-align:center">
+          <a class="btn" href="./projects/">View all projects &rarr;</a>
         </div>
       </div>
     </section>
+
+    <!-- About Teaser -->
+    <section class="section">
+      <div class="container">
+        <div style="max-width:640px">
+          <p class="section-label">About</p>
+          <h2>A bit about me</h2>
+          <p class="lead">
+            I'm a CS student who likes building things end-to-end — from designing
+            service boundaries to debugging pointer bugs at midnight. I have hands-on
+            experience with customer-facing work through T-Mobile, which taught me as
+            much about communication and fast problem-solving as any CS course.
+          </p>
+          <div class="cta-row">
+            <a class="btn primary" href="./about.html">Read more about me</a>
+            <a class="btn" href="./resume.html">Download Resume</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="footer">
     <div class="container footer-inner">
-      <p>© <span id="year"></span> Diego Urquiola • Trevecca-pedia</p>
-      <a href="https://github.com/DeLsonJabberwo" target="_blank" rel="noreferrer">GitHub</a>
+      <p>&copy; <span id="year"></span> Diego Urquiola</p>
+      <div class="footer-links">
+        <a href="https://github.com/DeLsonJabberwo" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/diegourquiola0806/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="./contact.html">Contact</a>
+      </div>
     </div>
   </footer>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <script src="./assets/js/main.js"></script>
 </body>
 </html>

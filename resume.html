@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resume — Diego Urquiola</title>
+  <meta name="description" content="Resume of Diego Urquiola — CS student, systems builder, download PDF." />
+  <link rel="icon" type="image/svg+xml" href="./assets/img/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="./">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Diego Urquiola</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="main-nav" aria-label="Primary navigation">
+        <a href="./">Home</a>
+        <a href="./projects/">Projects</a>
+        <a href="./about.html">About</a>
+        <a href="./resume.html" class="active">Resume</a>
+        <a href="./contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="./">Home</a>
+          <span aria-hidden="true">/</span>
+          <span>Resume</span>
+        </nav>
+        <h1>Resume</h1>
+        <p class="lead">Download my resume or view it inline below.</p>
+        <div class="cta-row" style="margin-top:0">
+          <a class="btn primary" href="./assets/resume.pdf" download="Diego_Urquiola_Resume.pdf">
+            &#8595; Download PDF
+          </a>
+          <a class="btn" href="./about.html">About Me</a>
+          <a class="btn" href="./contact.html">Contact</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume embed -->
+    <section class="section">
+      <div class="container">
+
+        <div class="resume-embed">
+          <iframe src="./assets/resume.pdf" title="Diego Urquiola Resume" aria-label="Resume PDF viewer"></iframe>
+        </div>
+
+        <!-- Snapshot / text version -->
+        <div style="margin-top:48px">
+          <h2 style="margin-bottom:24px">At a glance</h2>
+          <div class="grid-2">
+
+            <div class="card">
+              <h3>Education</h3>
+              <p><strong>B.S. Computer Science</strong></p>
+              <p class="muted" style="font-size:14px; margin-top:6px">Trevecca Nazarene University &mdash; In progress</p>
+              <ul style="margin-top:12px; padding-left:18px; color:var(--text-secondary); font-size:14px; line-height:1.8">
+                <li>Data Structures &amp; Algorithms</li>
+                <li>Systems Programming</li>
+                <li>Software Engineering</li>
+                <li>Database Design</li>
+              </ul>
+            </div>
+
+            <div class="card">
+              <h3>Experience</h3>
+              <p><strong>Customer Service Representative</strong></p>
+              <p class="muted" style="font-size:14px; margin-top:6px">T-Mobile &mdash; Part-time</p>
+              <p style="margin-top:10px; font-size:14px; color:var(--text-secondary); line-height:1.7">
+                High-volume customer troubleshooting, technical device support, account
+                problem resolution, and clear communication under pressure.
+              </p>
+            </div>
+
+            <div class="card">
+              <h3>Technical Skills</h3>
+              <p style="font-size:14px; color:var(--text-secondary); line-height:1.9">
+                <strong style="color:var(--text)">Languages:</strong> Java, C++, Python, Go, SQL, HTML, CSS, JavaScript<br>
+                <strong style="color:var(--text)">Tools:</strong> Docker, PostgreSQL, Git, JWT, REST APIs<br>
+                <strong style="color:var(--text)">Concepts:</strong> Data Structures, OOP, Service Architecture
+              </p>
+            </div>
+
+            <div class="card">
+              <h3>Selected Projects</h3>
+              <ul style="padding-left:18px; color:var(--text-secondary); font-size:14px; line-height:1.9">
+                <li><strong style="color:var(--text)">Trevecca-pedia</strong> — Multi-service wiki (Go, PostgreSQL, Docker)</li>
+                <li><strong style="color:var(--text)">Huffman Encoding</strong> — Lossless compression from scratch (Java)</li>
+                <li><strong style="color:var(--text)">Arkanoid Remake</strong> — Extended game with improved OOP (Java)</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Diego Urquiola</p>
+      <div class="footer-links">
+        <a href="https://github.com/DeLsonJabberwo" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/diegourquiola0806/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="./contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects — Diego Urquiola</title>
+  <meta name="description" content="All projects by Diego Urquiola — backend systems, algorithms, and game development." />
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Diego Urquiola</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="main-nav" aria-label="Primary navigation">
+        <a href="../">Home</a>
+        <a href="./index.html" class="active">Projects</a>
+        <a href="../about.html">About</a>
+        <a href="../resume.html">Resume</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../">Home</a>
+          <span aria-hidden="true">/</span>
+          <span>Projects</span>
+        </nav>
+        <h1>Projects</h1>
+        <p class="lead">
+          A collection of things I've built — backend services, algorithms, and games.
+          Each one has a full writeup covering architecture, decisions, and what I learned.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+
+        <div class="grid-3">
+
+          <!-- Trevecca-pedia -->
+          <a href="./trevecca-pedia.html" class="project-card">
+            <div>
+              <div class="tag-row" style="margin-bottom:12px">
+                <span class="tag blue">Go</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">Docker</span>
+                <span class="tag">JWT</span>
+              </div>
+              <h3>Trevecca-pedia</h3>
+              <p class="desc">
+                A multi-service wiki platform with search, authentication, and a web
+                UI. My responsibility was the auth service — JWT issuance, protected
+                routes, and inter-service token validation.
+              </p>
+            </div>
+            <div class="project-card-footer">
+              <div class="tag-row">
+                <span class="tag">Backend</span>
+                <span class="tag">Team Project</span>
+                <span class="tag green">MVP in progress</span>
+              </div>
+              <span class="project-link">Read more &rarr;</span>
+            </div>
+          </a>
+
+          <!-- Huffman Encoding -->
+          <a href="./huffman-encoding.html" class="project-card">
+            <div>
+              <div class="tag-row" style="margin-bottom:12px">
+                <span class="tag blue">Java</span>
+                <span class="tag">Data Structures</span>
+                <span class="tag">Algorithms</span>
+              </div>
+              <h3>Huffman Encoding</h3>
+              <p class="desc">
+                Lossless data compression built from scratch. Implements a priority
+                queue, Huffman tree construction, encoding table generation, and
+                bit-level encode/decode for arbitrary text input.
+              </p>
+            </div>
+            <div class="project-card-footer">
+              <div class="tag-row">
+                <span class="tag">Algorithms</span>
+                <span class="tag">Solo</span>
+                <span class="tag green">Complete</span>
+              </div>
+              <span class="project-link">Read more &rarr;</span>
+            </div>
+          </a>
+
+          <!-- Arkanoid -->
+          <a href="./arkanoid.html" class="project-card">
+            <div>
+              <div class="tag-row" style="margin-bottom:12px">
+                <span class="tag blue">Java</span>
+                <span class="tag">OOP</span>
+                <span class="tag">Game Dev</span>
+              </div>
+              <h3>Arkanoid Remake</h3>
+              <p class="desc">
+                An extended version of the classic Arkanoid breakout game. Added
+                improved collision detection, multiple brick types, a power-up
+                system, and a refactored object hierarchy.
+              </p>
+            </div>
+            <div class="project-card-footer">
+              <div class="tag-row">
+                <span class="tag">Game Dev</span>
+                <span class="tag">Solo</span>
+                <span class="tag green">Complete</span>
+              </div>
+              <span class="project-link">Read more &rarr;</span>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Diego Urquiola</p>
+      <div class="footer-links">
+        <a href="https://github.com/DeLsonJabberwo" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/diegourquiola0806/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

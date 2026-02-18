@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trevecca-pedia — Diego Urquiola</title>
+  <meta name="description" content="Trevecca-pedia: a multi-service wiki platform in Go with JWT auth, PostgreSQL, and Docker." />
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Diego Urquiola</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="main-nav" aria-label="Primary navigation">
+        <a href="../">Home</a>
+        <a href="./index.html" class="active">Projects</a>
+        <a href="../about.html">About</a>
+        <a href="../resume.html">Resume</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../">Home</a>
+          <span aria-hidden="true">/</span>
+          <a href="./index.html">Projects</a>
+          <span aria-hidden="true">/</span>
+          <span>Trevecca-pedia</span>
+        </nav>
+        <div class="tag-row" style="margin-bottom:14px">
+          <span class="tag blue">Go</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Docker</span>
+          <span class="tag">JWT</span>
+          <span class="tag green">MVP in progress</span>
+        </div>
+        <h1>Trevecca-pedia</h1>
+        <p class="lead">
+          A multi-service wiki platform with search, authentication, and a web UI —
+          built as a team project with clear service boundaries and a containerized
+          development environment.
+        </p>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="project-detail">
+      <div class="container project-layout">
+
+        <!-- Main content -->
+        <article class="project-main">
+
+          <!-- Overview -->
+          <div class="content-section">
+            <h2>Overview</h2>
+            <p style="color:var(--text-secondary); line-height:1.75">
+              Trevecca-pedia is an internal wiki platform built as a service-based system.
+              Users can register and log in, browse and search content pages, and manage
+              wiki entries. The project was designed to be easy to demo, easy to extend,
+              and structured so each service has a single clear responsibility.
+            </p>
+            <p style="color:var(--text-secondary); line-height:1.75">
+              The project matters because it demonstrates the kind of backend thinking
+              that doesn't come from toy tutorials — actual service decomposition, auth
+              token flows across service boundaries, and a containerized setup that
+              a teammate can clone and run without configuration drama.
+            </p>
+
+            <div class="grid-3" style="margin-top:20px">
+              <div class="card">
+                <h3>Problem</h3>
+                <p>Need an internal, searchable knowledge base with reliable auth and a clean web UI.</p>
+              </div>
+              <div class="card">
+                <h3>Solution</h3>
+                <p>Three services, each doing one job: web UI, wiki content, and authentication.</p>
+              </div>
+              <div class="card">
+                <h3>My Role</h3>
+                <p>Owned the authentication service end-to-end — design, implementation, and integration.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tech Stack -->
+          <div class="content-section">
+            <h2>Tech Stack</h2>
+            <div class="tech-grid">
+              <span class="tech-badge">Go</span>
+              <span class="tech-badge">PostgreSQL</span>
+              <span class="tech-badge">Docker &amp; Docker Compose</span>
+              <span class="tech-badge">JWT (JSON Web Tokens)</span>
+              <span class="tech-badge">REST APIs</span>
+              <span class="tech-badge">bcrypt</span>
+            </div>
+          </div>
+
+          <!-- What I Built -->
+          <div class="content-section">
+            <h2>What I Built</h2>
+            <ul class="content-list">
+              <li>Designed and implemented the full authentication service in Go — register, login, logout, and token refresh endpoints.</li>
+              <li>Implemented JWT issuance with configurable expiry and secret key management via environment variables.</li>
+              <li>Built middleware for protected route validation — the web and wiki services forward the token; auth service verifies and responds with user claims.</li>
+              <li>Hashed passwords with bcrypt before storage; never stored plaintext credentials.</li>
+              <li>Wrote the PostgreSQL schema for the users table, including indexes on email for fast lookups.</li>
+              <li>Coordinated API contracts with the teammates building the wiki and web services so inter-service calls had agreed-upon request/response shapes.</li>
+              <li>Configured the auth service container in Docker Compose with correct environment injection and service dependencies.</li>
+            </ul>
+          </div>
+
+          <!-- Architecture -->
+          <div class="content-section">
+            <h2>Architecture</h2>
+            <p style="color:var(--text-secondary)">How the three services connect in the MVP:</p>
+
+            <div class="diagram">
+              <div class="diagram-flow">
+                <div class="dnode">Browser</div>
+                <div class="darrow">&rarr;</div>
+                <div class="dnode hi">Web Service</div>
+                <div class="darrow">&rarr;</div>
+                <div class="dstack">
+                  <div class="dnode hi">Auth Service</div>
+                  <div class="dnode">Wiki Service</div>
+                </div>
+                <div class="darrow">&rarr;</div>
+                <div class="dnode green">PostgreSQL</div>
+              </div>
+            </div>
+
+            <div class="callout">
+              <strong>Auth flow:</strong> The user logs in via the web service, which forwards
+              credentials to the auth service. Auth service validates, issues a JWT, and returns
+              it. The web service stores the token and attaches it to subsequent requests to the
+              wiki service. The wiki service sends it to auth for validation before performing
+              any protected action.
+            </div>
+
+            <p style="color:var(--text-secondary); margin-top:16px; line-height:1.75">
+              Each service runs in its own Docker container. Docker Compose handles networking,
+              startup order, and environment variable injection. This means a new contributor
+              can run <code style="background:rgba(96,165,250,.1); padding:1px 7px; border-radius:4px; font-size:13px">docker compose up</code> and have the full system running locally in minutes.
+            </p>
+          </div>
+
+          <!-- Challenges + Learnings -->
+          <div class="content-section">
+            <h2>Challenges &amp; What I Learned</h2>
+            <ul class="content-list">
+              <li><strong>Inter-service token validation</strong> — Getting the token to flow correctly from browser → web → wiki → auth required careful coordination. We settled on a clear header convention and documented it early.</li>
+              <li><strong>Docker networking</strong> — Services need to reference each other by container name, not localhost. Debugging this taught me a lot about how Docker's internal DNS works.</li>
+              <li><strong>JWT expiry edge cases</strong> — I learned to think about what happens when a token expires mid-session, and how the web service should handle a 401 from the auth service gracefully.</li>
+              <li><strong>Defining API contracts as a team</strong> — Working with teammates on request/response shapes forced me to think about how to communicate technical decisions clearly and commit to interfaces early enough that we weren't blocking each other.</li>
+            </ul>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="project-sidebar">
+
+          <div class="sidebar-card">
+            <h4>Links</h4>
+            <div class="sidebar-links">
+              <a href="https://github.com/DeLsonJabberwo/trevecca-pedia" target="_blank" rel="noreferrer">
+                &#9670; Repository
+              </a>
+              <a href="#" onclick="alert('Live demo coming when web UI is deployed.'); return false;">
+                &#9670; Demo (coming soon)
+              </a>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <h4>Project Info</h4>
+            <div style="display:grid; gap:10px">
+              <div>
+                <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px">Type</div>
+                <div style="font-size:14px; font-weight:600">Team Project</div>
+              </div>
+              <div>
+                <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px">My Role</div>
+                <div style="font-size:14px; font-weight:600">Auth Service</div>
+              </div>
+              <div>
+                <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px">Status</div>
+                <div style="font-size:14px; font-weight:600; color:var(--accent2)">MVP in progress</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <h4>Other Projects</h4>
+            <div class="sidebar-links">
+              <a href="./huffman-encoding.html">&#9670; Huffman Encoding</a>
+              <a href="./arkanoid.html">&#9670; Arkanoid Remake</a>
+            </div>
+          </div>
+
+        </aside>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Diego Urquiola</p>
+      <div class="footer-links">
+        <a href="https://github.com/DeLsonJabberwo" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/diegourquiola0806/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
