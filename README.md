@@ -103,7 +103,7 @@ Change a variable and it updates everywhere.
 
 - **Email:** search `resume.html` and `contact.html` for `your.email@example.com` and replace.
 - **LinkedIn:** search all HTML files for `linkedin.com/in/diegourquiola0806` and update the URL.
-- **GitHub:** already set to `github.com/DeLsonJabberwo` — update if your username changes.
+- **GitHub:** already set to `github.com/diegourquiola` — update if your username changes.
 
 ---
 
