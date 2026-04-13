@@ -643,6 +643,20 @@ p:last-child { margin-bottom: 0; }
   }
   .nav.open { display: flex; }
   .nav a    { padding: 10px 14px; }
+
+  .journey-track {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .journey-track::before { display: none; }
+  .journey-node {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .journey-dot { margin-bottom: 0; }
+  .journey-tags { justify-content: flex-start; }
 }
 
 @media (max-width: 600px) {
@@ -651,4 +665,116 @@ p:last-child { margin-bottom: 0; }
   .footer-inner { flex-direction: column; text-align: center; }
   .cta-row      { flex-direction: column; }
   .cta-row .btn { width: 100%; }
+}
+
+/* ---------------------------------------------------------------
+   16. Journey / Progression Timeline (Home Page)
+   --------------------------------------------------------------- */
+.journey-track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+  margin-top: 40px;
+}
+.journey-track::before {
+  content: '';
+  position: absolute;
+  top: 21px;
+  left: 12.5%;
+  right: 12.5%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  z-index: 0;
+}
+.journey-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 16px;
+  position: relative;
+  z-index: 1;
+}
+.journey-dot {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 2px solid var(--accent);
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 20px;
+  box-shadow: 0 0 0 6px rgba(96,165,250,.1);
+  flex-shrink: 0;
+}
+.journey-dot.current {
+  border-color: var(--accent2);
+  color: var(--accent2);
+  box-shadow: 0 0 0 6px rgba(52,211,153,.12);
+}
+.journey-year {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.journey-node h3 { font-size: 16px; margin-bottom: 6px; }
+.journey-theme {
+  color: var(--text-secondary);
+  font-size: 13px;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+.journey-tags { justify-content: center; margin-bottom: 14px; }
+.journey-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  transition: color var(--transition);
+}
+.journey-link:hover { color: var(--accent2); }
+
+/* ---------------------------------------------------------------
+   17. Project Screenshot Placeholder
+   --------------------------------------------------------------- */
+.project-screenshot {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius);
+  border: 1px dashed rgba(148,163,184,.28);
+  background: rgba(17,24,39,.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 32px;
+  color: var(--muted);
+  text-align: center;
+}
+.project-screenshot .ss-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+}
+.project-screenshot .ss-sub { font-size: 13px; }
+
+.card-screenshot {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  background: rgba(15,23,42,.8);
+  border: 1px dashed rgba(148,163,184,.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 4px;
 }
