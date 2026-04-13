@@ -283,6 +283,7 @@ p:last-child { margin-bottom: 0; }
   color: var(--muted);
   transition: border-color var(--transition), transform var(--transition);
   overflow: hidden;
+  object-fit: cover;
 }
 .profile-placeholder svg {
   width: 56px;
