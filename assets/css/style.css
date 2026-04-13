@@ -616,63 +616,12 @@ p:last-child { margin-bottom: 0; }
 .footer-links a:hover { color: var(--text); }
 
 /* ---------------------------------------------------------------
-   15. Responsive
-   --------------------------------------------------------------- */
-@media (max-width: 900px) {
-  .hero-inner      { grid-template-columns: 1fr; }
-  .hero-panel      { position: static; }
-  .meta-row        { grid-template-columns: repeat(2,1fr); }
-  .grid-2, .grid-3 { grid-template-columns: 1fr; }
-  .about-grid      { grid-template-columns: 1fr; }
-  .contact-grid    { grid-template-columns: 1fr; }
-  .project-layout  { grid-template-columns: 1fr; }
-  .project-sidebar { position: static; }
-
-  .nav-toggle { display: flex; }
-  .nav {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: rgba(11,15,23,.97);
-    border-bottom: 1px solid var(--line);
-    flex-direction: column;
-    padding: 14px 20px 18px;
-    gap: 2px;
-  }
-  .nav.open { display: flex; }
-  .nav a    { padding: 10px 14px; }
-
-  .journey-track {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-  .journey-track::before { display: none; }
-  .journey-node {
-    flex-direction: row;
-    text-align: left;
-    align-items: flex-start;
-    gap: 20px;
-  }
-  .journey-dot { margin-bottom: 0; }
-  .journey-tags { justify-content: flex-start; }
-}
-
-@media (max-width: 600px) {
-  .section      { padding: 48px 0; }
-  .meta-row     { grid-template-columns: 1fr; }
-  .footer-inner { flex-direction: column; text-align: center; }
-  .cta-row      { flex-direction: column; }
-  .cta-row .btn { width: 100%; }
-}
-
-/* ---------------------------------------------------------------
    16. Journey / Progression Timeline (Home Page)
    --------------------------------------------------------------- */
 .journey-track {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 0;
   position: relative;
   margin-top: 40px;
 }
@@ -731,7 +680,7 @@ p:last-child { margin-bottom: 0; }
   margin-bottom: 10px;
   line-height: 1.5;
 }
-.journey-tags { justify-content: center; margin-bottom: 14px; }
+.journey-tags { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 14px; }
 .journey-link {
   font-size: 13px;
   font-weight: 600;
@@ -768,13 +717,65 @@ p:last-child { margin-bottom: 0; }
 .card-screenshot {
   width: 100%;
   aspect-ratio: 16 / 9;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   background: rgba(15,23,42,.8);
-  border: 1px dashed rgba(148,163,184,.2);
+  border: 1px dashed rgba(148,163,184,.28);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 12px;
   color: var(--muted);
   margin-bottom: 4px;
+}
+
+/* ---------------------------------------------------------------
+   15. Responsive
+   --------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .hero-inner      { grid-template-columns: 1fr; }
+  .hero-panel      { position: static; }
+  .meta-row        { grid-template-columns: repeat(2,1fr); }
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .about-grid      { grid-template-columns: 1fr; }
+  .contact-grid    { grid-template-columns: 1fr; }
+  .project-layout  { grid-template-columns: 1fr; }
+  .project-sidebar { position: static; }
+
+  .nav-toggle { display: flex; }
+  .nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(11,15,23,.97);
+    border-bottom: 1px solid var(--line);
+    flex-direction: column;
+    padding: 14px 20px 18px;
+    gap: 2px;
+  }
+  .nav.open { display: flex; }
+  .nav a    { padding: 10px 14px; }
+
+  .journey-track {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .journey-track::before { display: none; }
+  .journey-node {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .journey-dot { margin-bottom: 0; }
+  .journey-tags { justify-content: flex-start; }
+}
+
+@media (max-width: 600px) {
+  .section      { padding: 48px 0; }
+  .meta-row     { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; text-align: center; }
+  .cta-row      { flex-direction: column; }
+  .cta-row .btn { width: 100%; }
 }
