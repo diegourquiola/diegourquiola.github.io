@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Goalboard — Diego Urquiola</title>
+  <meta name="description" content="Goalboard: a soccer analytics mobile app built with React Native (Expo) and Python FastAPI, displaying league standings, match results, and team trends." />
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Diego Urquiola</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="main-nav" aria-label="Primary navigation">
+        <a href="../">Home</a>
+        <a href="./index.html" class="active">Projects</a>
+        <a href="../about.html">About</a>
+        <a href="../resume.html">Resume</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../">Home</a>
+          <span aria-hidden="true">/</span>
+          <a href="./index.html">Projects</a>
+          <span aria-hidden="true">/</span>
+          <span>Goalboard</span>
+        </nav>
+        <div class="tag-row" style="margin-bottom:14px">
+          <span class="tag blue">Python</span>
+          <span class="tag">React Native</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">Expo</span>
+          <span class="tag green">In Progress</span>
+        </div>
+        <h1>Goalboard</h1>
+        <p class="lead">
+          A soccer analytics mobile app that surfaces live league standings, match
+          results, and team performance trends &mdash; built with a React Native (Expo)
+          front-end and a Python FastAPI back-end.
+        </p>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="project-detail">
+      <div class="container project-layout">
+
+        <article class="project-main">
+
+          <!-- Screenshot Placeholder -->
+          <div class="project-screenshot">
+            <div class="ss-name">Goalboard</div>
+            <div class="ss-sub">Screenshot coming soon</div>
+          </div>
+
+          <!-- Overview -->
+          <div class="content-section">
+            <h2>Overview</h2>
+            <p style="color:var(--text-secondary); line-height:1.75">
+              Goalboard is a cross-platform mobile app for soccer fans who want real data
+              without the noise. It pulls league standings, recent match results, and team
+              performance trends from the Soccerdata API and presents them in a clean,
+              navigable interface. The project was motivated by wanting to build something
+              full-stack that I actually use &mdash; and by the challenge of connecting a
+              Python data layer to a mobile front-end.
+            </p>
+            <p style="color:var(--text-secondary); line-height:1.75">
+              This is my current project and the most technically broad thing I've built:
+              it involves API design, data normalization, async mobile state management,
+              and cross-platform UI &mdash; all wired together from scratch.
+            </p>
+
+            <div class="grid-3" style="margin-top:20px">
+              <div class="card">
+                <h3>Problem</h3>
+                <p>Existing soccer apps are cluttered. I wanted a focused view: standings, results, and trends &mdash; nothing else.</p>
+              </div>
+              <div class="card">
+                <h3>Solution</h3>
+                <p>A FastAPI backend that normalizes Soccerdata output into clean REST endpoints, consumed by a React Native app.</p>
+              </div>
+              <div class="card">
+                <h3>My Role</h3>
+                <p>Sole developer. Responsible for backend API design, data modeling, and the full mobile UI.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tech Stack -->
+          <div class="content-section">
+            <h2>Tech Stack</h2>
+            <div class="tech-grid">
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">FastAPI</span>
+              <span class="tech-badge">Soccerdata API</span>
+              <span class="tech-badge">React Native</span>
+              <span class="tech-badge">Expo</span>
+              <span class="tech-badge">REST APIs</span>
+            </div>
+          </div>
+
+          <!-- What I Built -->
+          <div class="content-section">
+            <h2>What I Built</h2>
+            <ul class="content-list">
+              <li><strong>FastAPI REST backend</strong> &mdash; designed and implemented endpoints for league standings, recent matches, and team stats. Each endpoint normalizes raw Soccerdata output into a consistent response shape the app can rely on.</li>
+              <li><strong>Soccerdata integration</strong> &mdash; wrapped the Soccerdata Python library to fetch live football data, handling rate limits and data normalization before passing results to the API layer.</li>
+              <li><strong>React Native screens</strong> &mdash; built three core screens: Standings (tabular league table), Matches (recent results with scores), and Team Detail (aggregated performance stats for a selected team).</li>
+              <li><strong>Expo configuration</strong> &mdash; set up the project for cross-platform deployment targeting both iOS and Android through Expo's managed workflow.</li>
+              <li><strong>Async data fetching</strong> &mdash; managed API calls and loading states in React Native using async/await with proper error boundaries to handle network failures gracefully.</li>
+              <li><strong>Data modeling</strong> &mdash; designed Pydantic models in FastAPI to validate and shape all API responses, making the front-end integration predictable.</li>
+            </ul>
+          </div>
+
+          <!-- Architecture -->
+          <div class="content-section">
+            <h2>Architecture</h2>
+            <p style="color:var(--text-secondary); margin-bottom:16px">How data flows from the source API to the mobile screen:</p>
+
+            <div class="diagram">
+              <div class="diagram-flow">
+                <div class="dnode">Soccerdata API</div>
+                <div class="darrow">&rarr;</div>
+                <div class="dnode hi">FastAPI Backend</div>
+                <div class="darrow">&rarr;</div>
+                <div class="dnode">REST Endpoints</div>
+                <div class="darrow">&rarr;</div>
+                <div class="dnode green">React Native App</div>
+              </div>
+            </div>
+
+            <div class="callout" style="margin-top:16px">
+              <strong>Data flow:</strong> The React Native app makes HTTP requests to the FastAPI
+              backend. The backend fetches raw data from the Soccerdata Python library,
+              normalizes it into Pydantic-validated response models, and returns clean JSON.
+              The front-end never touches raw Soccerdata output &mdash; the backend owns the
+              data contract.
+            </div>
+          </div>
+
+          <!-- Challenges + Learnings -->
+          <div class="content-section">
+            <h2>Challenges &amp; What I Learned</h2>
+            <ul class="content-list">
+              <li><strong>Soccerdata normalization</strong> &mdash; the Soccerdata library returns data in different shapes depending on the league and season. I learned to write defensive normalization code that handles missing fields rather than assuming consistent structure.</li>
+              <li><strong>React Native async state</strong> &mdash; managing loading, error, and success states for multiple concurrent API calls requires clear patterns. I moved to a consistent fetch-on-mount with loading flag approach that's easy to reason about.</li>
+              <li><strong>Pydantic as a contract</strong> &mdash; defining Pydantic models upfront forced me to think about the API contract before writing handler logic. This made the front-end integration much smoother because the shape was locked in early.</li>
+              <li><strong>Cross-platform layout</strong> &mdash; React Native's Flexbox layout is close to CSS but not identical. I learned where the differences are (no grid, different default axis) through trial and error on the standings table layout.</li>
+            </ul>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="project-sidebar">
+
+          <div class="sidebar-card">
+            <h4>Links</h4>
+            <div class="sidebar-links">
+              <a href="https://github.com/diegourquiola/goalboard" target="_blank" rel="noreferrer">
+                &#9670; Repository
+              </a>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <h4>Project Info</h4>
+            <div style="display:grid; gap:10px">
+              <div>
+                <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px">Type</div>
+                <div style="font-size:14px; font-weight:600">Solo / Current</div>
+              </div>
+              <div>
+                <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px">Stack</div>
+                <div style="font-size:14px; font-weight:600">Python + React Native</div>
+              </div>
+              <div>
+                <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px">Status</div>
+                <div style="font-size:14px; font-weight:600; color:var(--accent2)">In Progress</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <h4>Other Projects</h4>
+            <div class="sidebar-links">
+              <a href="./trevecca-pedia.html">&#9670; Trevecca-pedia</a>
+              <a href="./huffman-encoding.html">&#9670; Huffman Encoding</a>
+              <a href="./arkanoid.html">&#9670; Arkanoid Remake</a>
+            </div>
+          </div>
+
+        </aside>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Diego Urquiola</p>
+      <div class="footer-links">
+        <a href="https://github.com/diegourquiola" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/diegourquiola0806/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
