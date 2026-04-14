@@ -648,7 +648,7 @@ p:last-child { margin-bottom: 0; }
    --------------------------------------------------------------- */
 .journey-track {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 0;
   position: relative;
   margin-top: 40px;
@@ -657,8 +657,8 @@ p:last-child { margin-bottom: 0; }
   content: '';
   position: absolute;
   top: 21px;
-  left: 12.5%;
-  right: 12.5%;
+  left: 16.66%;
+  right: 16.66%;
   height: 2px;
   background: linear-gradient(90deg, var(--accent), var(--accent2));
   z-index: 0;
