@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Projects — Diego Urquiola</title>
-  <meta name="description" content="All projects by Diego Urquiola — backend systems, algorithms, and game development." />
+  <meta name="description" content="All projects by Diego Urquiola — full-stack mobile apps, backend services, web applications, and game development." />
   <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,8 +43,9 @@
         </nav>
         <h1>Projects</h1>
         <p class="lead">
-          A collection of things I've built — backend services, algorithms, and games.
-          Each one has a full writeup covering architecture, decisions, and what I learned.
+          Four projects spanning game development, web full-stack, multi-service backends,
+          and full-stack mobile — each one with a full writeup covering architecture,
+          decisions, and what I learned.
         </p>
       </div>
     </section>
@@ -52,7 +53,34 @@
     <section class="section">
       <div class="container">
 
-        <div class="grid-3">
+        <div class="grid-2">
+
+          <!-- Goalboard -->
+          <a href="./goalboard.html" class="project-card">
+            <div>
+              <div class="card-screenshot">Screenshot coming soon</div>
+              <div class="tag-row" style="margin-bottom:12px">
+                <span class="tag blue">Python</span>
+                <span class="tag">React Native</span>
+                <span class="tag">FastAPI</span>
+                <span class="tag">Supabase</span>
+              </div>
+              <h3>Goalboard</h3>
+              <p class="desc">
+                Full-stack soccer analytics mobile app with live standings, match detail,
+                team and player profiles, user authentication (email, Google, Apple),
+                favorites, and push notifications for live match events. Deployed on Render + EAS.
+              </p>
+            </div>
+            <div class="project-card-footer">
+              <div class="tag-row">
+                <span class="tag">Mobile</span>
+                <span class="tag">Full-Stack</span>
+                <span class="tag green">Complete</span>
+              </div>
+              <span class="project-link">Read more &rarr;</span>
+            </div>
+          </a>
 
           <!-- Trevecca-pedia -->
           <a href="./trevecca-pedia.html" class="project-card">
@@ -67,15 +95,42 @@
               <h3>Trevecca-pedia</h3>
               <p class="desc">
                 A multi-service wiki platform with search, authentication, and a web
-                UI. My responsibility was the auth service — JWT issuance, protected
-                routes, and inter-service token validation.
+                UI. I owned the auth service — JWT issuance, protected routes, and
+                inter-service token validation. Documented with arc42.
               </p>
             </div>
             <div class="project-card-footer">
               <div class="tag-row">
                 <span class="tag">Backend</span>
                 <span class="tag">Team Project</span>
-                <span class="tag green">MVP in progress</span>
+                <span class="tag green">Complete</span>
+              </div>
+              <span class="project-link">Read more &rarr;</span>
+            </div>
+          </a>
+
+          <!-- StudySync -->
+          <a href="./study-planner.html" class="project-card">
+            <div>
+              <div class="card-screenshot">Screenshot coming soon</div>
+              <div class="tag-row" style="margin-bottom:12px">
+                <span class="tag blue">Python</span>
+                <span class="tag">Flask</span>
+                <span class="tag">SQLite</span>
+                <span class="tag">JavaScript</span>
+              </div>
+              <h3>StudySync</h3>
+              <p class="desc">
+                Full-stack web app that generates personalized, priority-based daily
+                study schedules. Custom algorithm weights study time by course difficulty,
+                confidence level, and days until exam. Calendar and schedule views.
+              </p>
+            </div>
+            <div class="project-card-footer">
+              <div class="tag-row">
+                <span class="tag">Web</span>
+                <span class="tag">Algorithms</span>
+                <span class="tag green">Complete</span>
               </div>
               <span class="project-link">Read more &rarr;</span>
             </div>
@@ -102,33 +157,6 @@
                 <span class="tag">Game Dev</span>
                 <span class="tag">Solo</span>
                 <span class="tag green">Complete</span>
-              </div>
-              <span class="project-link">Read more &rarr;</span>
-            </div>
-          </a>
-
-          <!-- Goalboard -->
-          <a href="./goalboard.html" class="project-card">
-            <div>
-              <div class="card-screenshot">Screenshot coming soon</div>
-              <div class="tag-row" style="margin-bottom:12px">
-                <span class="tag blue">Python</span>
-                <span class="tag">React Native</span>
-                <span class="tag">FastAPI</span>
-                <span class="tag">Expo</span>
-              </div>
-              <h3>Goalboard</h3>
-              <p class="desc">
-                A soccer analytics mobile app displaying live league standings, match
-                results, and team performance trends. FastAPI backend consumes the
-                Soccerdata API; React Native (Expo) front-end renders the data.
-              </p>
-            </div>
-            <div class="project-card-footer">
-              <div class="tag-row">
-                <span class="tag">Mobile</span>
-                <span class="tag">Full-Stack</span>
-                <span class="tag green">In Progress</span>
               </div>
               <span class="project-link">Read more &rarr;</span>
             </div>

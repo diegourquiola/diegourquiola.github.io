@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>StudySync — Diego Urquiola</title>
+  <meta name="description" content="StudySync: a full-stack web app that generates priority-based study schedules using a custom algorithm. Built with Python Flask, SQLite, and vanilla JavaScript." />
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Diego Urquiola</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="main-nav" aria-label="Primary navigation">
+        <a href="../">Home</a>
+        <a href="./index.html" class="active">Projects</a>
+        <a href="../about.html">About</a>
+        <a href="../resume.html">Resume</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../">Home</a>
+          <span aria-hidden="true">/</span>
+          <a href="./index.html">Projects</a>
+          <span aria-hidden="true">/</span>
+          <span>StudySync</span>
+        </nav>
+        <div class="tag-row" style="margin-bottom:14px">
+          <span class="tag blue">Python</span>
+          <span class="tag">Flask</span>
+          <span class="tag">SQLite</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag green">Complete</span>
+        </div>
+        <h1>StudySync</h1>
+        <p class="lead">
+          A full-stack web application that helps students optimize their study time
+          by generating personalized, priority-based daily study schedules. Flask backend,
+          SQLite persistence, and a vanilla JavaScript frontend with calendar and schedule views.
+        </p>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="project-detail">
+      <div class="container project-layout">
+
+        <article class="project-main">
+
+          <!-- Screenshot Placeholder -->
+          <div class="project-screenshot">
+            <div class="ss-name">StudySync</div>
+            <div class="ss-sub">Screenshot coming soon</div>
+          </div>
+
+          <!-- Overview -->
+          <div class="content-section">
+            <h2>Overview</h2>
+            <p style="color:var(--text-secondary); line-height:1.75">
+              StudySync is a full-stack web app built to solve a real problem: students
+              spending their limited study time on the wrong things. Instead of manually
+              deciding what to study, the user inputs their courses (with difficulty and
+              confidence ratings), upcoming exam and assignment dates, and how many hours
+              they have per day. The app generates a day-by-day schedule that
+              mathematically prioritizes higher-difficulty, lower-confidence, and
+              closer-deadline work.
+            </p>
+            <p style="color:var(--text-secondary); line-height:1.75">
+              The project demonstrates the full web development stack in a clean, focused
+              form: a REST API backend handling CRUD and schedule generation, a relational
+              database layer, and a single-page frontend that consumes the API without any
+              framework.
+            </p>
+
+            <div class="grid-3" style="margin-top:20px">
+              <div class="card">
+                <h3>Problem</h3>
+                <p>Students spread study time evenly across all subjects regardless of difficulty, confidence, or deadline — leading to poor performance on high-stakes exams.</p>
+              </div>
+              <div class="card">
+                <h3>Solution</h3>
+                <p>A priority algorithm that weights study time allocation by difficulty, confidence level, and days until exam. Daily blocks are generated and visualized automatically.</p>
+              </div>
+              <div class="card">
+                <h3>My Role</h3>
+                <p>Sole developer. Designed and implemented the backend, database schema, scheduling algorithm, REST API, and entire frontend from scratch.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tech Stack -->
+          <div class="content-section">
+            <h2>Tech Stack</h2>
+            <div class="tech-grid">
+              <span class="tech-badge">Python 3</span>
+              <span class="tech-badge">Flask</span>
+              <span class="tech-badge">SQLite</span>
+              <span class="tech-badge">Vanilla JavaScript</span>
+              <span class="tech-badge">HTML / CSS</span>
+              <span class="tech-badge">pytest</span>
+            </div>
+          </div>
+
+          <!-- What I Built -->
+          <div class="content-section">
+            <h2>What I Built</h2>
+            <ul class="content-list">
+              <li><strong>REST API (Flask)</strong> &mdash; 9 endpoints handling course and assignment CRUD, schedule generation, and demo data loading. Each endpoint returns JSON consumed by the frontend without page reloads.</li>
+              <li><strong>Priority scheduling algorithm</strong> &mdash; custom formula: <code>priority = difficulty × (6 − confidence) / days_until_exam</code>. Scores are normalized to percentages and available daily hours are allocated proportionally, rounded to 0.5-hour blocks with a minimum of 0.5 hours per active course.</li>
+              <li><strong>SQLite database</strong> &mdash; two-table schema (<code>courses</code> and <code>assignments</code>) with auto-creation on first run. The backend exposes clean data access functions used by all route handlers.</li>
+              <li><strong>Calendar view</strong> &mdash; month-by-month visual calendar built in vanilla JavaScript, rendering all assignments and exam dates as color-coded chips per course. Navigable by month without a page reload.</li>
+              <li><strong>Schedule view</strong> &mdash; day-by-day study plan rendered as color-coded time blocks per course. The user sets available hours per day, clicks Generate, and the full plan appears immediately.</li>
+              <li><strong>Demo mode</strong> &mdash; one-click load of 4 sample courses with varied difficulty, confidence, and deadlines — demonstrates the algorithm's differentiated allocation in a presentation context.</li>
+              <li><strong>Responsive design</strong> &mdash; mobile-first layout with breakpoints at 768px and 1024px; works on both desktop and phone without separate views.</li>
+              <li><strong>Test suite</strong> &mdash; pytest tests covering assignment CRUD operations and schedule generation edge cases.</li>
+            </ul>
+          </div>
+
+          <!-- Algorithm -->
+          <div class="content-section">
+            <h2>Scheduling Algorithm</h2>
+            <p style="color:var(--text-secondary); margin-bottom:16px">How the priority formula translates into a daily schedule:</p>
+
+            <div class="diagram">
+              <div class="diagram-flow">
+                <div class="dnode">Input: courses + hours/day</div>
+                <div class="darrow">&rarr;</div>
+                <div class="dnode hi">Priority score per course</div>
+                <div class="darrow">&rarr;</div>
+                <div class="dnode">Normalize to %</div>
+                <div class="darrow">&rarr;</div>
+                <div class="dnode green">Daily time blocks</div>
+              </div>
+            </div>
+
+            <div class="callout" style="margin-top:16px">
+              <strong>Formula:</strong> <code>priority = difficulty × (6 − confidence) / days_until_exam</code><br><br>
+              Higher difficulty → more time needed.<br>
+              Lower confidence → more time needed.<br>
+              Closer deadline → higher urgency.<br><br>
+              Scores are recalculated each day as deadlines approach, so the schedule
+              automatically reweights itself as exams get closer.
+            </div>
+
+            <div class="callout" style="margin-top:12px">
+              <strong>Example:</strong> With 4 hours/day and three courses — Math (difficulty 5,
+              confidence 2, 7 days), Physics (difficulty 4, confidence 4, 3 days), History
+              (difficulty 2, confidence 5, 14 days) — the algorithm allocates ~2 hrs to Math,
+              ~2 hrs to Physics, and the minimum 0.5 hrs to History, correctly identifying
+              that the urgent Physics exam and difficult Math course deserve the most time.
+            </div>
+          </div>
+
+          <!-- Architecture -->
+          <div class="content-section">
+            <h2>Architecture</h2>
+            <p style="color:var(--text-secondary); margin-bottom:16px">Three-tier web architecture with clear separation between data, logic, and presentation:</p>
+
+            <div class="diagram">
+              <div class="diagram-flow">
+                <div class="dnode">SQLite (courses + assignments)</div>
+                <div class="darrow">&rarr;</div>
+                <div class="dnode hi">Flask REST API</div>
+                <div class="darrow">&rarr;</div>
+                <div class="dnode green">Vanilla JS SPA</div>
+              </div>
+            </div>
+
+            <div class="callout" style="margin-top:16px">
+              The frontend is a single-page application: after the initial page load, all
+              navigation between the Courses, Calendar, and Schedule tabs happens via
+              JavaScript state changes and API calls. No framework — all DOM manipulation,
+              event binding, and API communication is hand-written, which made the
+              data flow explicit and debuggable.
+            </div>
+          </div>
+
+          <!-- Challenges + Learnings -->
+          <div class="content-section">
+            <h2>Challenges &amp; What I Learned</h2>
+            <ul class="content-list">
+              <li><strong>Algorithm edge cases.</strong> The priority formula produces division-by-zero when an exam is today (0 days remaining). Handling that case — and deciding the correct behavior (maximum priority, not a crash) — required thinking carefully about the algorithm's intent, not just its formula.</li>
+              <li><strong>No framework discipline.</strong> Writing the frontend in vanilla JS without React or Vue meant explicitly managing state, DOM updates, and event listeners. This made the data flow more visible and helped me understand what frameworks are actually abstracting.</li>
+              <li><strong>REST API design before implementation.</strong> Designing all 9 endpoints before writing any handler code meant the frontend and backend could be developed against a stable contract. When the shape of a response needed to change, the impact was contained.</li>
+              <li><strong>Database schema first.</strong> Defining the SQLite schema before writing route handlers forced clarity about what data the algorithm actually needed. A schema change late in development is expensive — getting it right early saved significant rework.</li>
+            </ul>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="project-sidebar">
+
+          <div class="sidebar-card">
+            <h4>Links</h4>
+            <div class="sidebar-links">
+              <a href="https://github.com/diegourquiola/StudyPlanner" target="_blank" rel="noreferrer">
+                &#9670; Repository
+              </a>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <h4>Project Info</h4>
+            <div style="display:grid; gap:10px">
+              <div>
+                <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px">Type</div>
+                <div style="font-size:14px; font-weight:600">Solo / Academic</div>
+              </div>
+              <div>
+                <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px">Year</div>
+                <div style="font-size:14px; font-weight:600">Senior</div>
+              </div>
+              <div>
+                <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px">Stack</div>
+                <div style="font-size:14px; font-weight:600">Python + Flask + SQLite</div>
+              </div>
+              <div>
+                <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px">Status</div>
+                <div style="font-size:14px; font-weight:600; color:var(--accent)">Complete</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <h4>Other Projects</h4>
+            <div class="sidebar-links">
+              <a href="./goalboard.html">&#9670; Goalboard</a>
+              <a href="./trevecca-pedia.html">&#9670; Trevecca-pedia</a>
+              <a href="./arkanoid.html">&#9670; Arkanoid Remake</a>
+            </div>
+          </div>
+
+        </aside>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Diego Urquiola</p>
+      <div class="footer-links">
+        <a href="https://github.com/diegourquiola" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/diegourquiola0806/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

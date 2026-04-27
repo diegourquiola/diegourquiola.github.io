@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Goalboard — Diego Urquiola</title>
-  <meta name="description" content="Goalboard: a soccer analytics mobile app built with React Native (Expo) and Python FastAPI, displaying league standings, match results, and team trends." />
+  <meta name="description" content="Goalboard: a full-stack soccer analytics mobile app built with React Native (Expo), Python FastAPI, and Supabase — featuring live standings, match detail, push notifications, and user authentication." />
   <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,13 +49,15 @@
           <span class="tag">React Native</span>
           <span class="tag">FastAPI</span>
           <span class="tag">Expo</span>
-          <span class="tag green">In Progress</span>
+          <span class="tag">Supabase</span>
+          <span class="tag green">Complete</span>
         </div>
         <h1>Goalboard</h1>
         <p class="lead">
-          A soccer analytics mobile app that surfaces live league standings, match
-          results, and team performance trends &mdash; built with a React Native (Expo)
-          front-end and a Python FastAPI back-end.
+          A full-stack soccer analytics mobile app &mdash; live standings, match detail with
+          lineups and head-to-head history, team and player profiles, push notifications for
+          favorited teams, and full user authentication. Built with React Native (Expo), a
+          Python FastAPI backend deployed on Render, and Supabase for auth and data storage.
         </p>
       </div>
     </section>
@@ -76,31 +78,34 @@
           <div class="content-section">
             <h2>Overview</h2>
             <p style="color:var(--text-secondary); line-height:1.75">
-              Goalboard is a cross-platform mobile app for soccer fans who want real data
-              without the noise. It pulls league standings, recent match results, and team
-              performance trends from the Soccerdata API and presents them in a clean,
-              navigable interface. The project was motivated by wanting to build something
-              full-stack that I actually use &mdash; and by the challenge of connecting a
-              Python data layer to a mobile front-end.
+              Goalboard is a cross-platform mobile app for soccer fans who want clean, real
+              data without the noise of mainstream sports apps. It pulls live and historical
+              soccer data from the API-Football v3 REST API through a Python FastAPI backend,
+              presenting standings, fixtures, team analytics, match detail, and player
+              statistics in a focused interface. The project was built as my Individual
+              Software Engineering project at Trevecca Nazarene University (Spring 2026).
             </p>
             <p style="color:var(--text-secondary); line-height:1.75">
-              This is my current project and the most technically broad thing I've built:
-              it involves API design, data normalization, async mobile state management,
-              and cross-platform UI &mdash; all wired together from scratch.
+              The app went through six sprints, starting from a basic standings screen and
+              growing into a feature-complete product with user accounts (email/password,
+              Google OAuth, Apple Sign-In), a Favorites system backed by Supabase Row Level
+              Security, and push notifications for 11 live match event types. The backend
+              is always-on, deployed to Render with auto-deploy on every push to
+              <code>main</code>.
             </p>
 
             <div class="grid-3" style="margin-top:20px">
               <div class="card">
                 <h3>Problem</h3>
-                <p>Existing soccer apps are cluttered. I wanted a focused view: standings, results, and trends &mdash; nothing else.</p>
+                <p>Existing soccer apps are cluttered with ads, betting integrations, and social noise. There's no focused option for just standings, match data, and team trends.</p>
               </div>
               <div class="card">
                 <h3>Solution</h3>
-                <p>A FastAPI backend that normalizes Soccerdata output into clean REST endpoints, consumed by a React Native app.</p>
+                <p>A FastAPI backend that proxies API-Football v3, applies TTL caching, and exposes clean endpoints &mdash; consumed by a React Native app with auth, favorites, and live push notifications.</p>
               </div>
               <div class="card">
                 <h3>My Role</h3>
-                <p>Sole developer. Responsible for backend API design, data modeling, and the full mobile UI.</p>
+                <p>Sole developer. Responsible for the full stack: backend API design, database schema, mobile UI, auth integration, push notification scheduler, and cloud deployment.</p>
               </div>
             </div>
           </div>
@@ -111,10 +116,16 @@
             <div class="tech-grid">
               <span class="tech-badge">Python</span>
               <span class="tech-badge">FastAPI</span>
-              <span class="tech-badge">Soccerdata API</span>
+              <span class="tech-badge">API-Football v3</span>
               <span class="tech-badge">React Native</span>
-              <span class="tech-badge">Expo</span>
-              <span class="tech-badge">REST APIs</span>
+              <span class="tech-badge">Expo SDK 55</span>
+              <span class="tech-badge">Supabase</span>
+              <span class="tech-badge">PostgreSQL</span>
+              <span class="tech-badge">APScheduler</span>
+              <span class="tech-badge">Expo Push Notifications</span>
+              <span class="tech-badge">EAS</span>
+              <span class="tech-badge">Render</span>
+              <span class="tech-badge">pytest</span>
             </div>
           </div>
 
@@ -122,49 +133,85 @@
           <div class="content-section">
             <h2>What I Built</h2>
             <ul class="content-list">
-              <li><strong>FastAPI REST backend</strong> &mdash; designed and implemented endpoints for league standings, recent matches, and team stats. Each endpoint normalizes raw Soccerdata output into a consistent response shape the app can rely on.</li>
-              <li><strong>Soccerdata integration</strong> &mdash; wrapped the Soccerdata Python library to fetch live football data, handling rate limits and data normalization before passing results to the API layer.</li>
-              <li><strong>React Native screens</strong> &mdash; built three core screens: Standings (tabular league table), Matches (recent results with scores), and Team Detail (aggregated performance stats for a selected team).</li>
-              <li><strong>Expo configuration</strong> &mdash; set up the project for cross-platform deployment targeting both iOS and Android through Expo's managed workflow.</li>
-              <li><strong>Async data fetching</strong> &mdash; managed API calls and loading states in React Native using async/await with proper error boundaries to handle network failures gracefully.</li>
-              <li><strong>Data modeling</strong> &mdash; designed Pydantic models in FastAPI to validate and shape all API responses, making the front-end integration predictable.</li>
+              <li><strong>FastAPI REST backend (18 endpoints)</strong> &mdash; proxies API-Football v3, applies per-endpoint TTL caching (30s for live matches, up to 1 hour for reference data), transforms response shapes for the mobile client, and verifies Supabase JWTs on protected routes via JWKS public key lookup.</li>
+              <li><strong>League and match browsing</strong> &mdash; featured competitions grid with full-text search by name or country; standings with color-coded position zones; fixture list grouped by date with status filters and auto-scroll to the next upcoming match; live matches auto-poll every 60 seconds.</li>
+              <li><strong>Match detail screen</strong> &mdash; score header, match statistics (possession, shots, corners, passes, fouls), mini league table for both teams, head-to-head history, recent form badges, and starting XI on a visual pitch diagram with player ratings.</li>
+              <li><strong>Team and player profiles</strong> &mdash; season stats chips, next fixture card, recent results, full squad by position, transfers, and a season fixtures browser (all past results + all upcoming matches). Player profile shows bio, physical attributes, and per-competition season stats.</li>
+              <li><strong>Team Analytics tab</strong> &mdash; goals scored/conceded sparkline charts, actual last-5-match W/D/L form badges, win-rate stats, and a global team search by name.</li>
+              <li><strong>User authentication</strong> &mdash; email/password (8+ chars, letter, number, symbol required), Google OAuth, and Apple Sign-In via Supabase Auth. Sessions persist indefinitely until the user logs out.</li>
+              <li><strong>Favorites system</strong> &mdash; authenticated users save leagues, teams, and players; stored in Supabase with Row Level Security. Tapping a favorite navigates directly to the full detail screen. Logged-out users see an AuthGate bottom sheet.</li>
+              <li><strong>Push notifications</strong> &mdash; two APScheduler background jobs run every 60 seconds on the backend: one polls live match events (kick-off, goals, halftime, full time, red cards, VAR penalties, extra time, penalty shootout) and one polls upcoming fixtures (lineups confirmed ~1 hour before kickoff, 30-min pre-match reminder, postponed/cancelled alerts).</li>
+              <li><strong>Profile screen</strong> &mdash; editable display name, email view, three-step OTP password change (send code → verify → set new password), and logout. Accessible via header icon on all main tabs.</li>
+              <li><strong>Cloud deployment</strong> &mdash; backend deployed on Render with auto-deploy on push to <code>main</code>; frontend distributed via EAS. Push token refreshed on every app open so delivery is always current.</li>
+              <li><strong>28 backend unit tests</strong> &mdash; pytest suite covering fixture parsing, standings transformation, league search deduplication, H2H parsing, lineup parsing, cache TTL behavior, and error handling for invalid inputs. All mocked with <code>unittest.mock.patch</code>.</li>
             </ul>
           </div>
 
           <!-- Architecture -->
           <div class="content-section">
             <h2>Architecture</h2>
-            <p style="color:var(--text-secondary); margin-bottom:16px">How data flows from the source API to the mobile screen:</p>
+            <p style="color:var(--text-secondary); margin-bottom:16px">Four-tier architecture with clear separation of concerns:</p>
 
             <div class="diagram">
               <div class="diagram-flow">
-                <div class="dnode">Soccerdata API</div>
+                <div class="dnode">API-Football v3</div>
                 <div class="darrow">&rarr;</div>
-                <div class="dnode hi">FastAPI Backend</div>
+                <div class="dnode hi">FastAPI on Render</div>
                 <div class="darrow">&rarr;</div>
-                <div class="dnode">REST Endpoints</div>
+                <div class="dnode">Supabase (Auth + DB)</div>
                 <div class="darrow">&rarr;</div>
-                <div class="dnode green">React Native App</div>
+                <div class="dnode green">React Native (Expo)</div>
               </div>
             </div>
 
             <div class="callout" style="margin-top:16px">
-              <strong>Data flow:</strong> The React Native app makes HTTP requests to the FastAPI
-              backend. The backend fetches raw data from the Soccerdata Python library,
-              normalizes it into Pydantic-validated response models, and returns clean JSON.
-              The front-end never touches raw Soccerdata output &mdash; the backend owns the
-              data contract.
+              <strong>Backend proxy:</strong> All API-Football calls are routed through the FastAPI
+              backend &mdash; protecting the API key, enabling server-side TTL caching, and
+              providing a stable contract independent of upstream schema changes. Protected
+              endpoints verify Supabase JWTs via JWKS (<code>PyJWKClient</code>), making
+              verification algorithm-agnostic as Supabase migrated to ECC P-256 signing keys.
             </div>
+
+            <div class="callout" style="margin-top:12px">
+              <strong>Navigation:</strong> A root <code>NativeStackNavigator</code> wraps the bottom
+              tab navigator so any tab can push shared screens (MatchDetail, TeamDetail,
+              PlayerDetail, Profile) without losing tab state or duplicating screen registrations.
+              The Favorites tab registers its own LeagueDetail screen for in-context league navigation.
+            </div>
+
+            <div class="callout" style="margin-top:12px">
+              <strong>Push notification pipeline:</strong> Two APScheduler jobs (60s interval) handle
+              separate concerns &mdash; <code>poll_live_events</code> for in-match events and
+              <code>poll_upcoming_events</code> for pre-match alerts. A single job cannot cover
+              both because postponed/cancelled statuses only appear in the full daily fixture list,
+              not the live-events endpoint.
+            </div>
+          </div>
+
+          <!-- Sprint Breakdown -->
+          <div class="content-section">
+            <h2>Sprint Breakdown</h2>
+            <ul class="content-list">
+              <li><strong>Sprint 0 (Week 1):</strong> Requirements analysis, system architecture design, Gantt chart, dev environment setup.</li>
+              <li><strong>Sprint 1 (Week 2):</strong> API-Football v3 integration, standings screen, matches screen with date/status filters, backend TTL caching layer.</li>
+              <li><strong>Sprint 2 (Week 3):</strong> Team analytics tab with sparkline charts, dark/light mode via system theme, per-section error states with retry, pull-to-refresh.</li>
+              <li><strong>Sprint 3 (Week 4):</strong> League search by name and country, match detail screen (H2H, lineups on pitch, form badges, match stats), team profile, player profile, top scorers, root stack navigation refactor.</li>
+              <li><strong>Sprint 4 (Week 5):</strong> Haptic feedback, blur UI (tab bar + header), live match auto-polling, team season fixtures browser, global team search, EAS build configuration, 28-test pytest suite, documentation.</li>
+              <li><strong>Sprint 5 (Post-delivery):</strong> Supabase auth (email/password, Google OAuth, Apple Sign-In), profile screen, system theme, Favorites tab, AuthGate modal, push notifications for 8 live event types, backend JWT middleware, Render cloud deployment.</li>
+              <li><strong>Sprint 6 (Post-delivery):</strong> OTP email verification for password change, password strength enforcement, profile name editing, persistent sessions, push token refresh on every app open, pre-match lineups notification, 30-min kickoff reminder, extra time / penalty shootout / postponed / cancelled notifications, scrollable search results with X dismiss, actual last-5-match form badges.</li>
+            </ul>
           </div>
 
           <!-- Challenges + Learnings -->
           <div class="content-section">
             <h2>Challenges &amp; What I Learned</h2>
             <ul class="content-list">
-              <li><strong>Soccerdata normalization</strong> &mdash; the Soccerdata library returns data in different shapes depending on the league and season. I learned to write defensive normalization code that handles missing fields rather than assuming consistent structure.</li>
-              <li><strong>React Native async state</strong> &mdash; managing loading, error, and success states for multiple concurrent API calls requires clear patterns. I moved to a consistent fetch-on-mount with loading flag approach that's easy to reason about.</li>
-              <li><strong>Pydantic as a contract</strong> &mdash; defining Pydantic models upfront forced me to think about the API contract before writing handler logic. This made the front-end integration much smoother because the shape was locked in early.</li>
-              <li><strong>Cross-platform layout</strong> &mdash; React Native's Flexbox layout is close to CSS but not identical. I learned where the differences are (no grid, different default axis) through trial and error on the standings table layout.</li>
+              <li><strong>Navigation architecture matters early.</strong> Switching from a flat tab navigator to a root-stack-plus-tabs composition in Sprint 3 required touching many files. Designing navigation before building screens would have reduced this refactoring cost significantly.</li>
+              <li><strong>Push notification reliability requires end-to-end thinking.</strong> The notification pipeline spans four independent components (frontend token registration, Supabase push_tokens table, backend scheduler, Expo Push API). Two silent failures surfaced late: the push token was only registered on <code>SIGNED_IN</code> events (missing all subsequent app opens with a persisted session), and lineups notifications only fired when a match went live rather than when lineups actually dropped. Both required tracing the full delivery path to diagnose.</li>
+              <li><strong>Auth adds surface area across every layer.</strong> Integrating Supabase auth required coordinated changes across the frontend (AuthContext, OAuth flows), backend (JWT verification, protected endpoints), and three external systems (Supabase project, Google Cloud Console, Apple Developer Portal). Supabase had also migrated from HS256 shared-secret JWTs to ECC P-256 asymmetric keys, which required switching to JWKS-based verification.</li>
+              <li><strong>Iterative polish compounds.</strong> Haptics, blur effects, retry buttons, live polling, and scrollable search results each took under an hour individually but together produced an app that feels significantly more polished than the Sprint 2 baseline.</li>
+              <li><strong>Cloud deployment removes a critical dependency.</strong> The push notification scheduler requires the backend to be always-on. Deploying to Render eliminated the dependency on my local machine and made real-device testing for notifications actually reliable.</li>
+              <li><strong>Security is incremental.</strong> The initial password change flow allowed anyone with an unlocked device to silently update the account password. Adding OTP verification and password strength requirements in Sprint 6 closed that gap with minimal UX disruption &mdash; three clear steps that match patterns users already recognize.</li>
             </ul>
           </div>
 
@@ -187,15 +234,27 @@
             <div style="display:grid; gap:10px">
               <div>
                 <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px">Type</div>
-                <div style="font-size:14px; font-weight:600">Solo / Current</div>
+                <div style="font-size:14px; font-weight:600">Solo / Academic</div>
+              </div>
+              <div>
+                <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px">Course</div>
+                <div style="font-size:14px; font-weight:600">Software Engineering ITI-4170</div>
               </div>
               <div>
                 <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px">Stack</div>
-                <div style="font-size:14px; font-weight:600">Python + React Native</div>
+                <div style="font-size:14px; font-weight:600">Python + React Native + Supabase</div>
+              </div>
+              <div>
+                <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px">Sprints</div>
+                <div style="font-size:14px; font-weight:600">6 (Sprint 0 &ndash; Sprint 6)</div>
+              </div>
+              <div>
+                <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px">Tests</div>
+                <div style="font-size:14px; font-weight:600">28 backend unit tests (all passing)</div>
               </div>
               <div>
                 <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px">Status</div>
-                <div style="font-size:14px; font-weight:600; color:var(--accent2)">In Progress</div>
+                <div style="font-size:14px; font-weight:600; color:var(--accent)">Complete</div>
               </div>
             </div>
           </div>
@@ -204,7 +263,6 @@
             <h4>Other Projects</h4>
             <div class="sidebar-links">
               <a href="./trevecca-pedia.html">&#9670; Trevecca-pedia</a>
-              <a href="./huffman-encoding.html">&#9670; Huffman Encoding</a>
               <a href="./arkanoid.html">&#9670; Arkanoid Remake</a>
             </div>
           </div>
