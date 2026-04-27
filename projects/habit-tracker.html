@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Habit Tracker | Diego Urquiola</title>
+  <meta name="description" content="Habit Tracker: a full-stack web app built with Python Flask, SQLite, and vanilla JavaScript. Daily habit tracking, streak algorithm, REST API, and 25 automated tests." />
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Diego Urquiola</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="main-nav" aria-label="Primary navigation">
+        <a href="../">Home</a>
+        <a href="./index.html" class="active">Projects</a>
+        <a href="../about.html">About</a>
+        <a href="../resume.html">Resume</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../">Home</a>
+          <span aria-hidden="true">/</span>
+          <a href="./index.html">Projects</a>
+          <span aria-hidden="true">/</span>
+          <span>Habit Tracker</span>
+        </nav>
+        <div class="tag-row" style="margin-bottom:14px">
+          <span class="tag blue">Python</span>
+          <span class="tag">Flask</span>
+          <span class="tag">SQLite</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag green">Complete</span>
+        </div>
+        <h1>Habit Tracker</h1>
+        <p class="lead">
+          A full-stack web application for building and tracking daily habits. Flask REST API,
+          SQLite persistence, a streak algorithm designed from first principles, 25 automated
+          tests, and a vanilla JavaScript single-page frontend.
+        </p>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="project-detail">
+      <div class="container project-layout">
+
+        <article class="project-main">
+
+          <!-- Screenshot Placeholder -->
+          <div class="project-screenshot">
+            <div class="ss-name">Habit Tracker</div>
+            <div class="ss-sub">Screenshot coming soon</div>
+          </div>
+
+          <!-- Overview -->
+          <div class="content-section">
+            <h2>Overview</h2>
+            <p style="color:var(--text-secondary); line-height:1.75">
+              Habit Tracker is a full-stack web application that lets users build daily habits,
+              check them off each day, and track progress through streak counters. Built from
+              scratch using Python, Flask, SQLite, and vanilla JavaScript, with no frameworks,
+              no external UI libraries, and no deployment server required.
+            </p>
+            <p style="color:var(--text-secondary); line-height:1.75">
+              The goal was to build something real: a working product with a database, a REST API,
+              a tested backend, and a functional frontend, all connected and running together. The
+              project started with a written spec before any code was written and used
+              test-driven development for the algorithmic core.
+            </p>
+
+            <div class="grid-3" style="margin-top:20px">
+              <div class="card">
+                <h3>Today View</h3>
+                <p>Every habit with a color-coded dot, current streak count, and a checkbox. Clicking logs the habit as complete; clicking again undoes it. The streak updates immediately.</p>
+              </div>
+              <div class="card">
+                <h3>Detail Modal</h3>
+                <p>Clicking a habit opens current streak, longest streak, and full completion history. Edit and Delete buttons included.</p>
+              </div>
+              <div class="card">
+                <h3>Add / Edit Modal</h3>
+                <p>Create or update a habit with a name, optional description, and a color picker. All data persists in a local SQLite file.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tech Stack -->
+          <div class="content-section">
+            <h2>Tech Stack</h2>
+            <div class="tech-grid">
+              <span class="tech-badge">Python 3</span>
+              <span class="tech-badge">Flask</span>
+              <span class="tech-badge">SQLite</span>
+              <span class="tech-badge">Vanilla JavaScript</span>
+              <span class="tech-badge">HTML / CSS</span>
+              <span class="tech-badge">pytest</span>
+            </div>
+          </div>
+
+          <!-- Architecture -->
+          <div class="content-section">
+            <h2>Architecture</h2>
+            <p style="color:var(--text-secondary); margin-bottom:16px">Three key decisions shaped the design:</p>
+
+            <div class="diagram">
+              <div class="diagram-flow">
+                <div class="dnode">SQLite (habits + completions)</div>
+                <div class="darrow">&rarr;</div>
+                <div class="dnode hi">Flask REST API</div>
+                <div class="darrow">&rarr;</div>
+                <div class="dnode green">Vanilla JS SPA</div>
+              </div>
+            </div>
+
+            <ul class="content-list" style="margin-top:16px">
+              <li><strong>Single-page, API-driven frontend.</strong> Flask serves one HTML file. After that, everything is <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">fetch()</code> calls. No full-page reloads, no Jinja templating for data. The frontend is fully decoupled from the backend.</li>
+              <li><strong>Pure functions for streak logic.</strong> <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">streaks.py</code> takes a list of date strings and returns an integer with no database calls, no side effects, no dependencies. This made it trivially testable and kept the algorithmic logic isolated from the web layer.</li>
+              <li><strong>Database-level constraint enforcement.</strong> A <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">UNIQUE(habit_id, completed_date)</code> constraint makes it physically impossible to log the same habit twice on the same day. The database enforces the rule, not the application code.</li>
+            </ul>
+          </div>
+
+          <!-- Streak Algorithm -->
+          <div class="content-section">
+            <h2>The Streak Algorithm</h2>
+            <p style="color:var(--text-secondary); margin-bottom:16px">
+              The most interesting engineering problem in the project. A naive approach of counting
+              all completions gives the wrong answer: a habit logged 100 times over two years but
+              not at all this month should have a streak of 0, not 100.
+            </p>
+
+            <div class="callout">
+              <strong>Key insight:</strong> walk backwards through time from today, counting only
+              consecutive days. The algorithm is a backwards traversal, not a count.
+            </div>
+
+            <div class="callout" style="margin-top:12px">
+              <strong>Edge case:</strong> if it is 7am and you have not checked in yet today, your
+              streak should not break just because today has not been logged. The function starts
+              from yesterday if today has no entry, so the streak stays intact until you check off
+              today (which adds to it) or until the next morning if you forgot (which breaks it).
+            </div>
+
+            <p style="color:var(--text-secondary); margin-top:16px; line-height:1.75">
+              Longest streak is a separate function that scans the entire history for the longest
+              consecutive run, correctly handling gaps of any size.
+            </p>
+          </div>
+
+          <!-- REST API -->
+          <div class="content-section">
+            <h2>REST API</h2>
+            <p style="color:var(--text-secondary); margin-bottom:16px">7 endpoints, all returning JSON with appropriate HTTP status codes:</p>
+            <div style="overflow-x:auto">
+              <table style="width:100%; border-collapse:collapse; font-size:13px; color:var(--text-secondary)">
+                <thead>
+                  <tr style="border-bottom:1px solid var(--border)">
+                    <th style="text-align:left; padding:8px 12px; font-weight:600; color:var(--text-primary)">Method</th>
+                    <th style="text-align:left; padding:8px 12px; font-weight:600; color:var(--text-primary)">Route</th>
+                    <th style="text-align:left; padding:8px 12px; font-weight:600; color:var(--text-primary)">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom:1px solid var(--border)">
+                    <td style="padding:8px 12px"><code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px">GET</code></td>
+                    <td style="padding:8px 12px"><code>/api/habits</code></td>
+                    <td style="padding:8px 12px">All habits with today's status and current streak</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--border)">
+                    <td style="padding:8px 12px"><code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px">POST</code></td>
+                    <td style="padding:8px 12px"><code>/api/habits</code></td>
+                    <td style="padding:8px 12px">Create a habit</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--border)">
+                    <td style="padding:8px 12px"><code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px">PUT</code></td>
+                    <td style="padding:8px 12px"><code>/api/habits/&lt;id&gt;</code></td>
+                    <td style="padding:8px 12px">Update name, description, color</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--border)">
+                    <td style="padding:8px 12px"><code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px">DELETE</code></td>
+                    <td style="padding:8px 12px"><code>/api/habits/&lt;id&gt;</code></td>
+                    <td style="padding:8px 12px">Delete habit and all its history</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--border)">
+                    <td style="padding:8px 12px"><code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px">POST</code></td>
+                    <td style="padding:8px 12px"><code>/api/habits/&lt;id&gt;/complete</code></td>
+                    <td style="padding:8px 12px">Log today as complete</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--border)">
+                    <td style="padding:8px 12px"><code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px">DELETE</code></td>
+                    <td style="padding:8px 12px"><code>/api/habits/&lt;id&gt;/complete</code></td>
+                    <td style="padding:8px 12px">Undo today's completion</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:8px 12px"><code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px">GET</code></td>
+                    <td style="padding:8px 12px"><code>/api/habits/&lt;id&gt;/stats</code></td>
+                    <td style="padding:8px 12px">Current streak, longest streak, full history</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Testing -->
+          <div class="content-section">
+            <h2>Testing</h2>
+            <p style="color:var(--text-secondary); margin-bottom:16px"><strong>25 tests total, all passing.</strong></p>
+
+            <ul class="content-list">
+              <li>
+                <strong>14 unit tests (<code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">test_streaks.py</code>)</strong>: test the streak functions in complete isolation. No Flask, no database, no HTTP. Just Python functions called with inputs. Covers empty history, single entries, consecutive days, gaps, duplicate dates, and longest-streak tracking. These run in milliseconds and never touch the filesystem.
+              </li>
+              <li>
+                <strong>11 integration tests (<code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">test_api.py</code>)</strong>: test the full stack from HTTP request through Flask route to SQLite and back. Each test runs against a fresh temporary database, deleted after the test. Covers habit CRUD, completion toggling, idempotency of double-completion, the <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">completed_today</code> flag, stats endpoint, and 404 handling.
+              </li>
+              <li>
+                <strong>Test-driven development for the streak module.</strong> Tests were written first and verified to fail before the implementation was written. This forced thinking about edge cases (duplicate dates, "streak alive if today not logged") before any code existed. Tests written after-the-fact tend to only cover the happy path.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Frontend -->
+          <div class="content-section">
+            <h2>Frontend</h2>
+            <p style="color:var(--text-secondary); line-height:1.75">
+              The entire frontend is a single JavaScript file (~130 lines) with no framework,
+              no build step, and no <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">node_modules</code>.
+              The HTML file is a static shell with no data. JavaScript fetches from the API on load
+              and after every action, rebuilds the DOM via <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">innerHTML</code>,
+              and re-attaches event listeners after each render.
+            </p>
+            <p style="color:var(--text-secondary); line-height:1.75">
+              This is the same pattern React and Vue use, just without the framework. Writing it by
+              hand made the data flow explicit and visible, and required solving problems that
+              frameworks typically abstract: event delegation on dynamic elements, XSS prevention
+              on user-provided content, and state management via API round-trips.
+            </p>
+          </div>
+
+          <!-- Challenges + Learnings -->
+          <div class="content-section">
+            <h2>Challenges &amp; What I Learned</h2>
+            <ul class="content-list">
+              <li><strong>Streak counting is a backwards traversal problem, not a counting problem.</strong> The insight that you walk backwards from today rather than forwards from the first entry is the key to getting it right. Designing this upfront in the spec prevented a re-write mid-project.</li>
+              <li><strong>Pure functions are easier to test.</strong> Moving streak logic into its own module with no dependencies made it possible to write 14 focused tests in minutes. If that logic lived inside a Flask route, you would need a running server to test any of it.</li>
+              <li><strong>Database constraints as business rules.</strong> The <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">UNIQUE</code> constraint enforces correctness everywhere automatically. It cannot be bypassed by a bug in application code, and it does not need to be re-implemented in every layer that touches the data.</li>
+              <li><strong>Flask blueprints and SQLite context managers.</strong> Splitting routes across files via blueprints keeps each module focused. Using <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">with get_db() as conn</code> gives automatic commit/rollback without manual transaction management.</li>
+              <li><strong>XSS prevention in vanilla JS.</strong> Any user-provided text injected via <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">innerHTML</code> must be escaped. If someone names their habit <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">&lt;script&gt;alert(1)&lt;/script&gt;</code>, the app should display that text, not execute it.</li>
+            </ul>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="project-sidebar">
+
+          <div class="sidebar-card">
+            <h4>Links</h4>
+            <div class="sidebar-links">
+              <a href="https://github.com/diegourquiola/HabitTracker" target="_blank" rel="noreferrer">
+                &#9670; Repository
+              </a>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <h4>Project Info</h4>
+            <div style="display:grid; gap:10px">
+              <div>
+                <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px">Type</div>
+                <div style="font-size:14px; font-weight:600">Solo / Academic</div>
+              </div>
+              <div>
+                <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px">Year</div>
+                <div style="font-size:14px; font-weight:600">Junior</div>
+              </div>
+              <div>
+                <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px">Stack</div>
+                <div style="font-size:14px; font-weight:600">Python + Flask + SQLite</div>
+              </div>
+              <div>
+                <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px">Tests</div>
+                <div style="font-size:14px; font-weight:600">25 (14 unit + 11 integration)</div>
+              </div>
+              <div>
+                <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px">Status</div>
+                <div style="font-size:14px; font-weight:600; color:var(--accent2)">Complete</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <h4>Other Projects</h4>
+            <div class="sidebar-links">
+              <a href="./goalboard.html">&#9670; Goalboard</a>
+              <a href="./trevecca-pedia.html">&#9670; Trevecca-pedia</a>
+              <a href="./study-planner.html">&#9670; StudySync</a>
+              <a href="./arkanoid.html">&#9670; Arkanoid Remake</a>
+            </div>
+          </div>
+
+        </aside>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Diego Urquiola</p>
+      <div class="footer-links">
+        <a href="https://github.com/diegourquiola" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/diegourquiola0806/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
