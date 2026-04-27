@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>StudySync  -  Diego Urquiola</title>
+  <title>StudySync | Diego Urquiola</title>
   <meta name="description" content="StudySync: a full-stack web app that generates priority-based study schedules using a custom algorithm. Built with Python Flask, SQLite, and vanilla JavaScript." />
   <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -94,7 +94,7 @@
             <div class="grid-3" style="margin-top:20px">
               <div class="card">
                 <h3>Problem</h3>
-                <p>Students spread study time evenly across all subjects regardless of difficulty, confidence, or deadline  -  leading to poor performance on high-stakes exams.</p>
+                <p>Students spread study time evenly across all subjects regardless of difficulty, confidence, or deadline, leading to poor performance on high-stakes exams.</p>
               </div>
               <div class="card">
                 <h3>Solution</h3>
@@ -124,14 +124,14 @@
           <div class="content-section">
             <h2>What I Built</h2>
             <ul class="content-list">
-              <li><strong>REST API (Flask)</strong>  -  9 endpoints handling course and assignment CRUD, schedule generation, and demo data loading. Each endpoint returns JSON consumed by the frontend without page reloads.</li>
-              <li><strong>Priority scheduling algorithm</strong>  -  custom formula: <code>priority = difficulty × (6 − confidence) / days_until_exam</code>. Scores are normalized to percentages and available daily hours are allocated proportionally, rounded to 0.5-hour blocks with a minimum of 0.5 hours per active course.</li>
-              <li><strong>SQLite database</strong>  -  two-table schema (<code>courses</code> and <code>assignments</code>) with auto-creation on first run. The backend exposes clean data access functions used by all route handlers.</li>
-              <li><strong>Calendar view</strong>  -  month-by-month visual calendar built in vanilla JavaScript, rendering all assignments and exam dates as color-coded chips per course. Navigable by month without a page reload.</li>
-              <li><strong>Schedule view</strong>  -  day-by-day study plan rendered as color-coded time blocks per course. The user sets available hours per day, clicks Generate, and the full plan appears immediately.</li>
-              <li><strong>Demo mode</strong>  -  one-click load of 4 sample courses with varied difficulty, confidence, and deadlines  -  demonstrates the algorithm's differentiated allocation in a presentation context.</li>
-              <li><strong>Responsive design</strong>  -  mobile-first layout with breakpoints at 768px and 1024px; works on both desktop and phone without separate views.</li>
-              <li><strong>Test suite</strong>  -  pytest tests covering assignment CRUD operations and schedule generation edge cases.</li>
+              <li><strong>REST API (Flask)</strong>: 9 endpoints handling course and assignment CRUD, schedule generation, and demo data loading. Each endpoint returns JSON consumed by the frontend without page reloads.</li>
+              <li><strong>Priority scheduling algorithm</strong>: custom formula: <code>priority = difficulty × (6 − confidence) / days_until_exam</code>. Scores are normalized to percentages and available daily hours are allocated proportionally, rounded to 0.5-hour blocks with a minimum of 0.5 hours per active course.</li>
+              <li><strong>SQLite database</strong>: two-table schema (<code>courses</code> and <code>assignments</code>) with auto-creation on first run. The backend exposes clean data access functions used by all route handlers.</li>
+              <li><strong>Calendar view</strong>: month-by-month visual calendar built in vanilla JavaScript, rendering all assignments and exam dates as color-coded chips per course. Navigable by month without a page reload.</li>
+              <li><strong>Schedule view</strong>: day-by-day study plan rendered as color-coded time blocks per course. The user sets available hours per day, clicks Generate, and the full plan appears immediately.</li>
+              <li><strong>Demo mode</strong>: one-click load of 4 sample courses with varied difficulty, confidence, and deadlines; demonstrates the algorithm's differentiated allocation in a presentation context.</li>
+              <li><strong>Responsive design</strong>: mobile-first layout with breakpoints at 768px and 1024px; works on both desktop and phone without separate views.</li>
+              <li><strong>Test suite</strong>: pytest tests covering assignment CRUD operations and schedule generation edge cases.</li>
             </ul>
           </div>
 
@@ -162,9 +162,9 @@
             </div>
 
             <div class="callout" style="margin-top:12px">
-              <strong>Example:</strong> With 4 hours/day and three courses  -  Math (difficulty 5,
-              confidence 2, 7 days), Physics (difficulty 4, confidence 4, 3 days), History
-              (difficulty 2, confidence 5, 14 days)  -  the algorithm allocates ~2 hrs to Math,
+              <strong>Example:</strong> With 4 hours/day and three courses (Math: difficulty 5,
+              confidence 2, 7 days; Physics: difficulty 4, confidence 4, 3 days; History:
+              difficulty 2, confidence 5, 14 days), the algorithm allocates ~2 hrs to Math,
               ~2 hrs to Physics, and the minimum 0.5 hrs to History, correctly identifying
               that the urgent Physics exam and difficult Math course deserve the most time.
             </div>
@@ -188,7 +188,7 @@
             <div class="callout" style="margin-top:16px">
               The frontend is a single-page application: after the initial page load, all
               navigation between the Courses, Calendar, and Schedule tabs happens via
-              JavaScript state changes and API calls. No framework  -  all DOM manipulation,
+              JavaScript state changes and API calls. No framework: all DOM manipulation,
               event binding, and API communication is hand-written, which made the
               data flow explicit and debuggable.
             </div>
@@ -198,10 +198,10 @@
           <div class="content-section">
             <h2>Challenges &amp; What I Learned</h2>
             <ul class="content-list">
-              <li><strong>Algorithm edge cases.</strong> The priority formula produces division-by-zero when an exam is today (0 days remaining). Handling that case  -  and deciding the correct behavior (maximum priority, not a crash)  -  required thinking carefully about the algorithm's intent, not just its formula.</li>
+              <li><strong>Algorithm edge cases.</strong> The priority formula produces division-by-zero when an exam is today (0 days remaining). Handling that case, and deciding the correct behavior (maximum priority, not a crash), required thinking carefully about the algorithm's intent, not just its formula.</li>
               <li><strong>No framework discipline.</strong> Writing the frontend in vanilla JS without React or Vue meant explicitly managing state, DOM updates, and event listeners. This made the data flow more visible and helped me understand what frameworks are actually abstracting.</li>
               <li><strong>REST API design before implementation.</strong> Designing all 9 endpoints before writing any handler code meant the frontend and backend could be developed against a stable contract. When the shape of a response needed to change, the impact was contained.</li>
-              <li><strong>Database schema first.</strong> Defining the SQLite schema before writing route handlers forced clarity about what data the algorithm actually needed. A schema change late in development is expensive  -  getting it right early saved significant rework.</li>
+              <li><strong>Database schema first.</strong> Defining the SQLite schema before writing route handlers forced clarity about what data the algorithm actually needed. A schema change late in development is expensive; getting it right early saved significant rework.</li>
             </ul>
           </div>
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Trevecca-pedia  -  Diego Urquiola</title>
+  <title>Trevecca-pedia | Diego Urquiola</title>
   <meta name="description" content="Trevecca-pedia: a multi-service wiki platform in Go with JWT auth, PostgreSQL, and Docker." />
   <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,7 +53,7 @@
         </div>
         <h1>Trevecca-pedia</h1>
         <p class="lead">
-          A multi-service wiki platform with search, authentication, and a web UI  - 
+          A multi-service wiki platform with search, authentication, and a web UI,
           built as a team project with clear service boundaries and a containerized
           development environment.
         </p>
@@ -84,7 +84,7 @@
             </p>
             <p style="color:var(--text-secondary); line-height:1.75">
               The project matters because it demonstrates the kind of backend thinking
-              that doesn't come from toy tutorials  -  actual service decomposition, auth
+              that doesn't come from toy tutorials: actual service decomposition, auth
               token flows across service boundaries, and a containerized setup that
               a teammate can clone and run without configuration drama.
             </p>
@@ -100,7 +100,7 @@
               </div>
               <div class="card">
                 <h3>My Role</h3>
-                <p>Owned the authentication service end-to-end  -  design, implementation, and integration.</p>
+                <p>Owned the authentication service end-to-end: design, implementation, and integration.</p>
               </div>
             </div>
           </div>
@@ -122,9 +122,9 @@
           <div class="content-section">
             <h2>What I Built</h2>
             <ul class="content-list">
-              <li>Designed and implemented the full authentication service in Go  -  register, login, logout, and token refresh endpoints.</li>
+              <li>Designed and implemented the full authentication service in Go: register, login, logout, and token refresh endpoints.</li>
               <li>Implemented JWT issuance with configurable expiry and secret key management via environment variables.</li>
-              <li>Built middleware for protected route validation  -  the web and wiki services forward the token; auth service verifies and responds with user claims.</li>
+              <li>Built middleware for protected route validation: the web and wiki services forward the token; auth service verifies and responds with user claims.</li>
               <li>Hashed passwords with bcrypt before storage; never stored plaintext credentials.</li>
               <li>Wrote the PostgreSQL schema for the users table, including indexes on email for fast lookups.</li>
               <li>Coordinated API contracts with the teammates building the wiki and web services so inter-service calls had agreed-upon request/response shapes.</li>
@@ -171,7 +171,7 @@
           <div class="content-section">
             <h2>Architecture Documentation (arc42)</h2>
             <p style="color:var(--text-secondary); line-height:1.75; margin-bottom:16px">
-              The Trevecca-pedia architecture was formally documented using the arc42 template  - 
+              The Trevecca-pedia architecture was formally documented using the arc42 template,
               a standardized format for software architecture documentation used in professional
               engineering practice. The document covers system context, the three-service building
               block view, runtime sequence diagrams for the auth flow, the Docker deployment view,
@@ -193,10 +193,10 @@
           <div class="content-section">
             <h2>Challenges &amp; What I Learned</h2>
             <ul class="content-list">
-              <li><strong>Inter-service token validation</strong>  -  Getting the token to flow correctly from browser → web → wiki → auth required careful coordination. We settled on a clear header convention and documented it early.</li>
-              <li><strong>Docker networking</strong>  -  Services need to reference each other by container name, not localhost. Debugging this taught me a lot about how Docker's internal DNS works.</li>
-              <li><strong>JWT expiry edge cases</strong>  -  I learned to think about what happens when a token expires mid-session, and how the web service should handle a 401 from the auth service gracefully.</li>
-              <li><strong>Defining API contracts as a team</strong>  -  Working with teammates on request/response shapes forced me to think about how to communicate technical decisions clearly and commit to interfaces early enough that we weren't blocking each other.</li>
+              <li><strong>Inter-service token validation</strong>: Getting the token to flow correctly from browser → web → wiki → auth required careful coordination. We settled on a clear header convention and documented it early.</li>
+              <li><strong>Docker networking</strong>: Services need to reference each other by container name, not localhost. Debugging this taught me a lot about how Docker's internal DNS works.</li>
+              <li><strong>JWT expiry edge cases</strong>: I learned to think about what happens when a token expires mid-session, and how the web service should handle a 401 from the auth service gracefully.</li>
+              <li><strong>Defining API contracts as a team</strong>: Working with teammates on request/response shapes forced me to think about how to communicate technical decisions clearly and commit to interfaces early enough that we weren't blocking each other.</li>
             </ul>
           </div>
 

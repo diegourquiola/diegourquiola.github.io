@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Goalboard  -  Diego Urquiola</title>
+  <title>Goalboard | Diego Urquiola</title>
   <meta name="description" content="Goalboard: a full-stack soccer analytics mobile app built with React Native (Expo), Python FastAPI, and Supabase  -  featuring live standings, match detail, push notifications, and user authentication." />
   <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,7 +54,7 @@
         </div>
         <h1>Goalboard</h1>
         <p class="lead">
-          A full-stack soccer analytics mobile app  -  live standings, match detail with
+          A full-stack soccer analytics mobile app: live standings, match detail with
           lineups and head-to-head history, team and player profiles, push notifications for
           favorited teams, and full user authentication. Built with React Native (Expo), a
           Python FastAPI backend deployed on Render, and Supabase for auth and data storage.
@@ -101,7 +101,7 @@
               </div>
               <div class="card">
                 <h3>Solution</h3>
-                <p>A FastAPI backend that proxies API-Football v3, applies TTL caching, and exposes clean endpoints  -  consumed by a React Native app with auth, favorites, and live push notifications.</p>
+                <p>A FastAPI backend that proxies API-Football v3, applies TTL caching, and exposes clean endpoints, consumed by a React Native app with auth, favorites, and live push notifications.</p>
               </div>
               <div class="card">
                 <h3>My Role</h3>
@@ -133,17 +133,17 @@
           <div class="content-section">
             <h2>What I Built</h2>
             <ul class="content-list">
-              <li><strong>FastAPI REST backend (18 endpoints)</strong>  -  proxies API-Football v3, applies per-endpoint TTL caching (30s for live matches, up to 1 hour for reference data), transforms response shapes for the mobile client, and verifies Supabase JWTs on protected routes via JWKS public key lookup.</li>
-              <li><strong>League and match browsing</strong>  -  featured competitions grid with full-text search by name or country; standings with color-coded position zones; fixture list grouped by date with status filters and auto-scroll to the next upcoming match; live matches auto-poll every 60 seconds.</li>
-              <li><strong>Match detail screen</strong>  -  score header, match statistics (possession, shots, corners, passes, fouls), mini league table for both teams, head-to-head history, recent form badges, and starting XI on a visual pitch diagram with player ratings.</li>
-              <li><strong>Team and player profiles</strong>  -  season stats chips, next fixture card, recent results, full squad by position, transfers, and a season fixtures browser (all past results + all upcoming matches). Player profile shows bio, physical attributes, and per-competition season stats.</li>
-              <li><strong>Team Analytics tab</strong>  -  goals scored/conceded sparkline charts, actual last-5-match W/D/L form badges, win-rate stats, and a global team search by name.</li>
-              <li><strong>User authentication</strong>  -  email/password (8+ chars, letter, number, symbol required), Google OAuth, and Apple Sign-In via Supabase Auth. Sessions persist indefinitely until the user logs out.</li>
-              <li><strong>Favorites system</strong>  -  authenticated users save leagues, teams, and players; stored in Supabase with Row Level Security. Tapping a favorite navigates directly to the full detail screen. Logged-out users see an AuthGate bottom sheet.</li>
-              <li><strong>Push notifications</strong>  -  two APScheduler background jobs run every 60 seconds on the backend: one polls live match events (kick-off, goals, halftime, full time, red cards, VAR penalties, extra time, penalty shootout) and one polls upcoming fixtures (lineups confirmed ~1 hour before kickoff, 30-min pre-match reminder, postponed/cancelled alerts).</li>
-              <li><strong>Profile screen</strong>  -  editable display name, email view, three-step OTP password change (send code → verify → set new password), and logout. Accessible via header icon on all main tabs.</li>
-              <li><strong>Cloud deployment</strong>  -  backend deployed on Render with auto-deploy on push to <code>main</code>; frontend distributed via EAS. Push token refreshed on every app open so delivery is always current.</li>
-              <li><strong>28 backend unit tests</strong>  -  pytest suite covering fixture parsing, standings transformation, league search deduplication, H2H parsing, lineup parsing, cache TTL behavior, and error handling for invalid inputs. All mocked with <code>unittest.mock.patch</code>.</li>
+              <li><strong>FastAPI REST backend (18 endpoints)</strong>: proxies API-Football v3, applies per-endpoint TTL caching (30s for live matches, up to 1 hour for reference data), transforms response shapes for the mobile client, and verifies Supabase JWTs on protected routes via JWKS public key lookup.</li>
+              <li><strong>League and match browsing</strong>: featured competitions grid with full-text search by name or country; standings with color-coded position zones; fixture list grouped by date with status filters and auto-scroll to the next upcoming match; live matches auto-poll every 60 seconds.</li>
+              <li><strong>Match detail screen</strong>: score header, match statistics (possession, shots, corners, passes, fouls), mini league table for both teams, head-to-head history, recent form badges, and starting XI on a visual pitch diagram with player ratings.</li>
+              <li><strong>Team and player profiles</strong>: season stats chips, next fixture card, recent results, full squad by position, transfers, and a season fixtures browser (all past results + all upcoming matches). Player profile shows bio, physical attributes, and per-competition season stats.</li>
+              <li><strong>Team Analytics tab</strong>: goals scored/conceded sparkline charts, actual last-5-match W/D/L form badges, win-rate stats, and a global team search by name.</li>
+              <li><strong>User authentication</strong>: email/password (8+ chars, letter, number, symbol required), Google OAuth, and Apple Sign-In via Supabase Auth. Sessions persist indefinitely until the user logs out.</li>
+              <li><strong>Favorites system</strong>: authenticated users save leagues, teams, and players; stored in Supabase with Row Level Security. Tapping a favorite navigates directly to the full detail screen. Logged-out users see an AuthGate bottom sheet.</li>
+              <li><strong>Push notifications</strong>: two APScheduler background jobs run every 60 seconds on the backend: one polls live match events (kick-off, goals, halftime, full time, red cards, VAR penalties, extra time, penalty shootout) and one polls upcoming fixtures (lineups confirmed ~1 hour before kickoff, 30-min pre-match reminder, postponed/cancelled alerts).</li>
+              <li><strong>Profile screen</strong>: editable display name, email view, three-step OTP password change (send code → verify → set new password), and logout. Accessible via header icon on all main tabs.</li>
+              <li><strong>Cloud deployment</strong>: backend deployed on Render with auto-deploy on push to <code>main</code>; frontend distributed via EAS. Push token refreshed on every app open so delivery is always current.</li>
+              <li><strong>28 backend unit tests</strong>: pytest suite covering fixture parsing, standings transformation, league search deduplication, H2H parsing, lineup parsing, cache TTL behavior, and error handling for invalid inputs. All mocked with <code>unittest.mock.patch</code>.</li>
             </ul>
           </div>
 
@@ -166,7 +166,7 @@
 
             <div class="callout" style="margin-top:16px">
               <strong>Backend proxy:</strong> All API-Football calls are routed through the FastAPI
-              backend  -  protecting the API key, enabling server-side TTL caching, and
+              backend, protecting the API key, enabling server-side TTL caching, and
               providing a stable contract independent of upstream schema changes. Protected
               endpoints verify Supabase JWTs via JWKS (<code>PyJWKClient</code>), making
               verification algorithm-agnostic as Supabase migrated to ECC P-256 signing keys.
@@ -181,7 +181,7 @@
 
             <div class="callout" style="margin-top:12px">
               <strong>Push notification pipeline:</strong> Two APScheduler jobs (60s interval) handle
-              separate concerns  -  <code>poll_live_events</code> for in-match events and
+              separate concerns: <code>poll_live_events</code> for in-match events and
               <code>poll_upcoming_events</code> for pre-match alerts. A single job cannot cover
               both because postponed/cancelled statuses only appear in the full daily fixture list,
               not the live-events endpoint.
@@ -211,7 +211,7 @@
               <li><strong>Auth adds surface area across every layer.</strong> Integrating Supabase auth required coordinated changes across the frontend (AuthContext, OAuth flows), backend (JWT verification, protected endpoints), and three external systems (Supabase project, Google Cloud Console, Apple Developer Portal). Supabase had also migrated from HS256 shared-secret JWTs to ECC P-256 asymmetric keys, which required switching to JWKS-based verification.</li>
               <li><strong>Iterative polish compounds.</strong> Haptics, blur effects, retry buttons, live polling, and scrollable search results each took under an hour individually but together produced an app that feels significantly more polished than the Sprint 2 baseline.</li>
               <li><strong>Cloud deployment removes a critical dependency.</strong> The push notification scheduler requires the backend to be always-on. Deploying to Render eliminated the dependency on my local machine and made real-device testing for notifications actually reliable.</li>
-              <li><strong>Security is incremental.</strong> The initial password change flow allowed anyone with an unlocked device to silently update the account password. Adding OTP verification and password strength requirements in Sprint 6 closed that gap with minimal UX disruption  -  three clear steps that match patterns users already recognize.</li>
+              <li><strong>Security is incremental.</strong> The initial password change flow allowed anyone with an unlocked device to silently update the account password. Adding OTP verification and password strength requirements in Sprint 6 closed that gap with minimal UX disruption, with three clear steps that match patterns users already recognize.</li>
             </ul>
           </div>
 

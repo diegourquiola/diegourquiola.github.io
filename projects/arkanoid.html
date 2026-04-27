@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Arkanoid Remake  -  Diego Urquiola</title>
+  <title>Arkanoid Remake | Diego Urquiola</title>
   <meta name="description" content="Arkanoid Remake: extended Arkanoid breakout game in Java with improved collision detection, new brick types, and cleaner OOP design." />
   <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -79,7 +79,7 @@
               This was a team project that extended a base Arkanoid implementation with richer
               mechanics, a refactored OOP architecture, and new features divided among the group.
               The team added improved collision detection, multiple brick types, a power-up system,
-              and level progression. My responsibility was the sound system - designing and
+              and level progression. My responsibility was the sound system: designing and
               implementing event-driven audio feedback across the full game.
             </p>
             <p style="color:var(--text-secondary); line-height:1.75">
@@ -122,11 +122,11 @@
           <div class="content-section">
             <h2>My Contribution: Sound System</h2>
             <ul class="content-list">
-              <li><strong>Event-driven audio architecture</strong> - designed a <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">SoundManager</code> class that other components could call without knowing how audio worked, keeping sound logic decoupled from game logic.</li>
-              <li><strong>Audio loading and playback</strong> - used Java's <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">javax.sound.sampled</code> API to load WAV files into <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">Clip</code> objects at startup, avoiding disk reads during gameplay that would cause audio lag.</li>
-              <li><strong>Game event coverage</strong> - wired sound effects to every meaningful game event: ball hitting a brick, ball hitting the paddle, ball hitting a wall, brick destroyed, power-up collected, level complete, life lost, and game over.</li>
-              <li><strong>Overlapping sounds</strong> - handled the case where the same sound fires multiple times in rapid succession (e.g. ball destroying several bricks at once) by opening a new <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">Clip</code> instance per play rather than reusing a single shared instance.</li>
-              <li><strong>Team integration</strong> - coordinated with teammates so the sound API was simple enough to call from the collision and game-state code they were writing, without requiring them to understand the audio implementation.</li>
+              <li><strong>Event-driven audio architecture</strong>: designed a <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">SoundManager</code> class that other components could call without knowing how audio worked, keeping sound logic decoupled from game logic.</li>
+              <li><strong>Audio loading and playback</strong>: used Java's <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">javax.sound.sampled</code> API to load WAV files into <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">Clip</code> objects at startup, avoiding disk reads during gameplay that would cause audio lag.</li>
+              <li><strong>Game event coverage</strong>: wired sound effects to every meaningful game event: ball hitting a brick, ball hitting the paddle, ball hitting a wall, brick destroyed, power-up collected, level complete, life lost, and game over.</li>
+              <li><strong>Overlapping sounds</strong>: handled the case where the same sound fires multiple times in rapid succession (e.g. ball destroying several bricks at once) by opening a new <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">Clip</code> instance per play rather than reusing a single shared instance.</li>
+              <li><strong>Team integration</strong>: coordinated with teammates so the sound API was simple enough to call from the collision and game-state code they were writing, without requiring them to understand the audio implementation.</li>
             </ul>
           </div>
 
@@ -135,10 +135,10 @@
             <h2>What the Team Built</h2>
             <p style="color:var(--text-secondary); margin-bottom:16px">Context for the full project my sound system was integrated into:</p>
             <ul class="content-list">
-              <li><strong>Improved collision detection</strong> - side-specific bounce logic replacing the original naive axis flip, fixing corner-clipping bugs.</li>
-              <li><strong>Brick class hierarchy</strong> - base <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">Brick</code> class with subclasses for standard, tough (two-hit), and exploding bricks.</li>
-              <li><strong>Power-up system</strong> - falling power-ups (wide paddle, extra ball, slow ball) implemented as individual classes behind a shared interface.</li>
-              <li><strong>Game state and level progression</strong> - lives system, score tracker, win/lose conditions, and level loading from 2D brick-type arrays.</li>
+              <li><strong>Improved collision detection</strong>: side-specific bounce logic replacing the original naive axis flip, fixing corner-clipping bugs.</li>
+              <li><strong>Brick class hierarchy</strong>: base <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">Brick</code> class with subclasses for standard, tough (two-hit), and exploding bricks.</li>
+              <li><strong>Power-up system</strong>: falling power-ups (wide paddle, extra ball, slow ball) implemented as individual classes behind a shared interface.</li>
+              <li><strong>Game state and level progression</strong>: lives system, score tracker, win/lose conditions, and level loading from 2D brick-type arrays.</li>
             </ul>
           </div>
 
@@ -146,10 +146,10 @@
           <div class="content-section">
             <h2>Challenges &amp; What I Learned</h2>
             <ul class="content-list">
-              <li><strong>Audio lag from loading on demand</strong> - my first attempt loaded audio files from disk each time a sound fired, which caused a noticeable delay on the first play. Pre-loading all clips at startup eliminated the lag entirely.</li>
-              <li><strong>Concurrent sound playback</strong> - a single <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">Clip</code> can only play once at a time; restarting it cuts off the previous play. The fix was opening a fresh clip instance per event rather than sharing one.</li>
-              <li><strong>Designing a clean API for teammates</strong> - the sound system had to be easy enough that teammates could add a one-line call from their code without understanding <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">javax.sound.sampled</code>. Writing for other developers is a different skill than writing for yourself.</li>
-              <li><strong>Integration in a team project</strong> - working against code written by others, rather than code I wrote, required reading and understanding their event model before designing how audio would hook into it.</li>
+              <li><strong>Audio lag from loading on demand</strong>: my first attempt loaded audio files from disk each time a sound fired, which caused a noticeable delay on the first play. Pre-loading all clips at startup eliminated the lag entirely.</li>
+              <li><strong>Concurrent sound playback</strong>: a single <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">Clip</code> can only play once at a time; restarting it cuts off the previous play. The fix was opening a fresh clip instance per event rather than sharing one.</li>
+              <li><strong>Designing a clean API for teammates</strong>: the sound system had to be easy enough that teammates could add a one-line call from their code without understanding <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">javax.sound.sampled</code>. Writing for other developers is a different skill than writing for yourself.</li>
+              <li><strong>Integration in a team project</strong>: working against code written by others, rather than code I wrote, required reading and understanding their event model before designing how audio would hook into it.</li>
             </ul>
           </div>
 
