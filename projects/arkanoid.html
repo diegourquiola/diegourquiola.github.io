@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Arkanoid Remake — Diego Urquiola</title>
+  <title>Arkanoid Remake  -  Diego Urquiola</title>
   <meta name="description" content="Arkanoid Remake: extended Arkanoid breakout game in Java with improved collision detection, new brick types, and cleaner OOP design." />
   <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,7 +52,7 @@
         </div>
         <h1>Arkanoid Remake</h1>
         <p class="lead">
-          An extended version of the classic Arkanoid breakout game — improved collision
+          An extended version of the classic Arkanoid breakout game  -  improved collision
           detection, multiple brick types, a power-up system, and a refactored
           object-oriented architecture.
         </p>
@@ -77,7 +77,7 @@
             <p style="color:var(--text-secondary); line-height:1.75">
               This project started from a base Arkanoid implementation and expanded it
               significantly. The goal was to improve the game's behavior, add new mechanics,
-              and refactor the codebase to follow solid OOP principles — specifically making
+              and refactor the codebase to follow solid OOP principles  -  specifically making
               it easy to add new brick types and behaviors without modifying existing classes.
             </p>
             <p style="color:var(--text-secondary); line-height:1.75">
@@ -119,12 +119,12 @@
           <div class="content-section">
             <h2>What I Built / Improved</h2>
             <ul class="content-list">
-              <li><strong>Collision detection overhaul</strong> — replaced the original axis-aligned bounding box collision with side-specific detection, so the ball correctly bounces off the top, bottom, left, and right faces of a brick independently. This fixed the "ball clips through corner" bug in the original.</li>
-              <li><strong>Brick class hierarchy</strong> — abstracted bricks into a base <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">Brick</code> class and created subclasses for StandardBrick, ToughBrick (takes two hits), and ExplodingBrick (destroys adjacent bricks on destruction).</li>
-              <li><strong>Power-up system</strong> — added falling power-ups that drop from destroyed bricks: wide paddle, extra ball, and slow ball. Each power-up is its own class implementing a shared interface, making it easy to add more.</li>
-              <li><strong>Game state management</strong> — added proper win/lose conditions, a lives system, level progression, and a simple score tracker displayed in the game HUD.</li>
-              <li><strong>Level loading</strong> — levels are defined as 2D arrays of brick type codes, making it straightforward to design new levels without changing game logic.</li>
-              <li><strong>Game loop cleanup</strong> — separated update logic (physics, collisions, state) from rendering, so the game loop is predictable and easy to extend.</li>
+              <li><strong>Collision detection overhaul</strong>  -  replaced the original axis-aligned bounding box collision with side-specific detection, so the ball correctly bounces off the top, bottom, left, and right faces of a brick independently. This fixed the "ball clips through corner" bug in the original.</li>
+              <li><strong>Brick class hierarchy</strong>  -  abstracted bricks into a base <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">Brick</code> class and created subclasses for StandardBrick, ToughBrick (takes two hits), and ExplodingBrick (destroys adjacent bricks on destruction).</li>
+              <li><strong>Power-up system</strong>  -  added falling power-ups that drop from destroyed bricks: wide paddle, extra ball, and slow ball. Each power-up is its own class implementing a shared interface, making it easy to add more.</li>
+              <li><strong>Game state management</strong>  -  added proper win/lose conditions, a lives system, level progression, and a simple score tracker displayed in the game HUD.</li>
+              <li><strong>Level loading</strong>  -  levels are defined as 2D arrays of brick type codes, making it straightforward to design new levels without changing game logic.</li>
+              <li><strong>Game loop cleanup</strong>  -  separated update logic (physics, collisions, state) from rendering, so the game loop is predictable and easy to extend.</li>
             </ul>
           </div>
 
@@ -152,7 +152,7 @@
               against all bricks, the walls, and the paddle. When a collision is detected, the
               bounce direction is computed based on which face was hit. Bricks handle their own
               hit logic (decrement health, trigger explosion, drop power-up) via an
-              <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">onHit()</code> method — the game loop doesn't need to know which brick type it's dealing with.
+              <code style="background:rgba(96,165,250,.1);padding:1px 7px;border-radius:4px;font-size:12px">onHit()</code> method  -  the game loop doesn't need to know which brick type it's dealing with.
             </div>
           </div>
 
@@ -160,10 +160,10 @@
           <div class="content-section">
             <h2>Challenges &amp; What I Learned</h2>
             <ul class="content-list">
-              <li><strong>Precise collision math</strong> — Getting side-specific collision right required computing the ball's velocity vector and the overlap on each axis. The naive approach (flip x or y velocity on any collision) produces wrong bounce angles at corners.</li>
-              <li><strong>Designing for extensibility</strong> — My first version of the brick hierarchy made ExplodingBrick hard to add because the base class knew too much about game state. I refactored to pass a callback/interface, which made adding new brick behaviors much cleaner.</li>
-              <li><strong>Game loop timing</strong> — Running the game loop at a fixed timestep vs. as fast as possible produces different behavior on different machines. I learned to use a fixed-timestep update with interpolated rendering.</li>
-              <li><strong>Scope management on a solo project</strong> — It's easy to keep adding features to a game indefinitely. I learned to define a feature list upfront and stick to it, which meant ExplodingBrick made it in but "level editor" didn't.</li>
+              <li><strong>Precise collision math</strong>  -  Getting side-specific collision right required computing the ball's velocity vector and the overlap on each axis. The naive approach (flip x or y velocity on any collision) produces wrong bounce angles at corners.</li>
+              <li><strong>Designing for extensibility</strong>  -  My first version of the brick hierarchy made ExplodingBrick hard to add because the base class knew too much about game state. I refactored to pass a callback/interface, which made adding new brick behaviors much cleaner.</li>
+              <li><strong>Game loop timing</strong>  -  Running the game loop at a fixed timestep vs. as fast as possible produces different behavior on different machines. I learned to use a fixed-timestep update with interpolated rendering.</li>
+              <li><strong>Scope management on a solo project</strong>  -  It's easy to keep adding features to a game indefinitely. I learned to define a feature list upfront and stick to it, which meant ExplodingBrick made it in but "level editor" didn't.</li>
             </ul>
           </div>
 
@@ -181,7 +181,7 @@
               <a href="#" onclick="alert('Repository link coming soon.'); return false;">
                 &#9670; Repository (coming soon)
               </a>
-              <a href="#" onclick="alert('No live demo — desktop Java app.'); return false;">
+              <a href="#" onclick="alert('No live demo  -  desktop Java app.'); return false;">
                 &#9670; Demo (desktop app)
               </a>
             </div>
