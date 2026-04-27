@@ -648,7 +648,7 @@ p:last-child { margin-bottom: 0; }
    --------------------------------------------------------------- */
 .journey-track {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 0;
   position: relative;
   margin-top: 40px;
@@ -656,9 +656,9 @@ p:last-child { margin-bottom: 0; }
 .journey-track::before {
   content: '';
   position: absolute;
-  top: 21px;
-  left: 12.5%;
-  right: 12.5%;
+  top: 19px;
+  left: 10%;
+  right: 10%;
   height: 2px;
   background: linear-gradient(90deg, var(--accent), var(--accent2));
   z-index: 0;
@@ -694,24 +694,24 @@ p:last-child { margin-bottom: 0; }
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 0 16px;
+  padding: 0 8px;
   position: relative;
   z-index: 1;
 }
 .journey-dot {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 999px;
   border: 2px solid var(--accent);
   background: var(--surface);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--accent);
-  margin-bottom: 20px;
-  box-shadow: 0 0 0 6px rgba(96,165,250,.1);
+  margin-bottom: 18px;
+  box-shadow: 0 0 0 5px rgba(96,165,250,.1);
   flex-shrink: 0;
 }
 .journey-dot.current {
@@ -727,10 +727,10 @@ p:last-child { margin-bottom: 0; }
   color: var(--muted);
   margin-bottom: 6px;
 }
-.journey-node h3 { font-size: 16px; margin-bottom: 6px; }
+.journey-node h3 { font-size: 15px; margin-bottom: 6px; }
 .journey-theme {
   color: var(--text-secondary);
-  font-size: 13px;
+  font-size: 12px;
   margin-bottom: 10px;
   line-height: 1.5;
 }
