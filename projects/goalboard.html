@@ -57,7 +57,7 @@
           A full-stack soccer analytics mobile app: live standings, match detail with
           lineups and head-to-head history, team and player profiles, push notifications for
           favorited teams, and full user authentication. Built with React Native (Expo), a
-          Python FastAPI backend deployed on Render, and Supabase for auth and data storage.
+          Python FastAPI backend deployed on Railway, and Supabase for auth and data storage.
         </p>
       </div>
     </section>
@@ -68,10 +68,9 @@
 
         <article class="project-main">
 
-          <!-- Screenshot Placeholder -->
+          <!-- Screenshot -->
           <div class="project-screenshot">
-            <div class="ss-name">Goalboard</div>
-            <div class="ss-sub">Screenshot coming soon</div>
+            <img src="../assets/img/goalboard_screenshot.jpeg" alt="Goalboard app screenshot" />
           </div>
 
           <!-- Overview -->
@@ -90,7 +89,7 @@
               growing into a feature-complete product with user accounts (email/password,
               Google OAuth, Apple Sign-In), a Favorites system backed by Supabase Row Level
               Security, and push notifications for 11 live match event types. The backend
-              is always-on, deployed to Render with auto-deploy on every push to
+              is always-on, deployed to Railway with auto-deploy on every push to
               <code>main</code>.
             </p>
 
@@ -124,7 +123,7 @@
               <span class="tech-badge">APScheduler</span>
               <span class="tech-badge">Expo Push Notifications</span>
               <span class="tech-badge">EAS</span>
-              <span class="tech-badge">Render</span>
+              <span class="tech-badge">Railway</span>
               <span class="tech-badge">pytest</span>
             </div>
           </div>
@@ -142,7 +141,7 @@
               <li><strong>Favorites system</strong>: authenticated users save leagues, teams, and players; stored in Supabase with Row Level Security. Tapping a favorite navigates directly to the full detail screen. Logged-out users see an AuthGate bottom sheet.</li>
               <li><strong>Push notifications</strong>: two APScheduler background jobs run every 60 seconds on the backend: one polls live match events (kick-off, goals, halftime, full time, red cards, VAR penalties, extra time, penalty shootout) and one polls upcoming fixtures (lineups confirmed ~1 hour before kickoff, 30-min pre-match reminder, postponed/cancelled alerts).</li>
               <li><strong>Profile screen</strong>: editable display name, email view, three-step OTP password change (send code → verify → set new password), and logout. Accessible via header icon on all main tabs.</li>
-              <li><strong>Cloud deployment</strong>: backend deployed on Render with auto-deploy on push to <code>main</code>; frontend distributed via EAS. Push token refreshed on every app open so delivery is always current.</li>
+              <li><strong>Cloud deployment</strong>: backend deployed on Railway with auto-deploy on push to <code>main</code>; frontend distributed via EAS. Push token refreshed on every app open so delivery is always current.</li>
               <li><strong>28 backend unit tests</strong>: pytest suite covering fixture parsing, standings transformation, league search deduplication, H2H parsing, lineup parsing, cache TTL behavior, and error handling for invalid inputs. All mocked with <code>unittest.mock.patch</code>.</li>
             </ul>
           </div>
@@ -156,7 +155,7 @@
               <div class="diagram-flow">
                 <div class="dnode">API-Football v3</div>
                 <div class="darrow">&rarr;</div>
-                <div class="dnode hi">FastAPI on Render</div>
+                <div class="dnode hi">FastAPI on Railway</div>
                 <div class="darrow">&rarr;</div>
                 <div class="dnode">Supabase (Auth + DB)</div>
                 <div class="darrow">&rarr;</div>
@@ -197,7 +196,7 @@
               <li><strong>Sprint 2 (Week 3):</strong> Team analytics tab with sparkline charts, dark/light mode via system theme, per-section error states with retry, pull-to-refresh.</li>
               <li><strong>Sprint 3 (Week 4):</strong> League search by name and country, match detail screen (H2H, lineups on pitch, form badges, match stats), team profile, player profile, top scorers, root stack navigation refactor.</li>
               <li><strong>Sprint 4 (Week 5):</strong> Haptic feedback, blur UI (tab bar + header), live match auto-polling, team season fixtures browser, global team search, EAS build configuration, 28-test pytest suite, documentation.</li>
-              <li><strong>Sprint 5 (Post-delivery):</strong> Supabase auth (email/password, Google OAuth, Apple Sign-In), profile screen, system theme, Favorites tab, AuthGate modal, push notifications for 8 live event types, backend JWT middleware, Render cloud deployment.</li>
+              <li><strong>Sprint 5 (Post-delivery):</strong> Supabase auth (email/password, Google OAuth, Apple Sign-In), profile screen, system theme, Favorites tab, AuthGate modal, push notifications for 8 live event types, backend JWT middleware, Railway cloud deployment.</li>
               <li><strong>Sprint 6 (Post-delivery):</strong> OTP email verification for password change, password strength enforcement, profile name editing, persistent sessions, push token refresh on every app open, pre-match lineups notification, 30-min kickoff reminder, extra time / penalty shootout / postponed / cancelled notifications, scrollable search results with X dismiss, actual last-5-match form badges.</li>
             </ul>
           </div>
@@ -210,7 +209,7 @@
               <li><strong>Push notification reliability requires end-to-end thinking.</strong> The notification pipeline spans four independent components (frontend token registration, Supabase push_tokens table, backend scheduler, Expo Push API). Two silent failures surfaced late: the push token was only registered on <code>SIGNED_IN</code> events (missing all subsequent app opens with a persisted session), and lineups notifications only fired when a match went live rather than when lineups actually dropped. Both required tracing the full delivery path to diagnose.</li>
               <li><strong>Auth adds surface area across every layer.</strong> Integrating Supabase auth required coordinated changes across the frontend (AuthContext, OAuth flows), backend (JWT verification, protected endpoints), and three external systems (Supabase project, Google Cloud Console, Apple Developer Portal). Supabase had also migrated from HS256 shared-secret JWTs to ECC P-256 asymmetric keys, which required switching to JWKS-based verification.</li>
               <li><strong>Iterative polish compounds.</strong> Haptics, blur effects, retry buttons, live polling, and scrollable search results each took under an hour individually but together produced an app that feels significantly more polished than the Sprint 2 baseline.</li>
-              <li><strong>Cloud deployment removes a critical dependency.</strong> The push notification scheduler requires the backend to be always-on. Deploying to Render eliminated the dependency on my local machine and made real-device testing for notifications actually reliable.</li>
+              <li><strong>Cloud deployment removes a critical dependency.</strong> The push notification scheduler requires the backend to be always-on. Deploying to Railway eliminated the dependency on my local machine and made real-device testing for notifications actually reliable.</li>
               <li><strong>Security is incremental.</strong> The initial password change flow allowed anyone with an unlocked device to silently update the account password. Adding OTP verification and password strength requirements in Sprint 6 closed that gap with minimal UX disruption, with three clear steps that match patterns users already recognize.</li>
             </ul>
           </div>
